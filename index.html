@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos JS</title>
+</head>
+<body>
+    
+    <h1>Fundamentos javaScript</h1>
+    <p>Hola</p>
+
+    <script>
+        // Alcance global (mala practica)
+        var hola = 'Hola mundo';
+
+        // Alcance local
+        let hello = 'hello world';
+        console.log(hola);
+
+        // == Porqué NO usar var ==
+        var music = 'Rock';
+        console.log(`Variable musica ANTES del bloque ${music}`);
+
+        {
+            var music = 'Pop';
+            console.log(`Variable musica DENTRO del bloque ${music}`);
+        }
+
+        console.log(`Variable musica DESPUÉS del bloque ${music}`);
+
+        // [imprime] lo cual no debería pasar
+        //  Rock
+        //  Pop
+        //  Pop
+
+        // Si declaro con var la variable se queda guardada en el objeto window
+
+        // == Porqué USAR let ==
+
+        console.log('******');
+        let music2 = 'Rock';
+        console.log(`Variable musica ANTES del bloque ${music2}`);
+
+        {
+            let music2 = 'Pop';
+            console.log(`Variable musica DENTRO del bloque ${music2}`);
+        }
+
+        console.log(`Variable musica DESPUÉS del bloque ${music2}`);
+
+
+        // ===== CONST ======
+        // Son valores que no deben cambiar
+        // Con valores primitivos presenta error si se cambian
+
+        const PI = 3.1416
+
+        // Con valores compuestos no presenta error
+        const objeto = {
+            nombre: 'Oscar',
+            edad: 34,
+        }
+        const colores = ['blanco', 'negro', 'azul'];
+
+        console.log(objeto);
+        console.log(colores);
+
+        // Agregando correo al objeto
+        objeto.correo = '1@1.com';
+
+        //PUsheando nuevo elemento al array colores
+        colores.push('naranja');
+
+        console.log(objeto);
+        console.log(colores);
+
+
+        // ===== STRINGS ======
+        let nombre = '   Oscar';
+        let nickname = 'Pollo';
+
+        console.log(nombre, nickname);
+        console.log(nombre.length, 
+        nickname.length,
+        nombre.toLowerCase(),
+        nickname.toUpperCase(),
+        nombre.includes('sc'),
+        // El includes busca coincidencias que estén en el string
+        
+        nombre.trim(),
+        // El trim borra espacios antes y despuñes de la cadena
+
+        nombre.split(' '),
+        // Split separa las cadenas
+        );
+
+
+        // ===== CONCATENACIÓN ======
+        let nombre2 = 'Oscar';
+        let apellido = 'Gonzalez';
+
+        let saludo1 = 'Hola mi nombre es ' + nombre2;
+        console.log(saludo1);
+
+        // ===== INTERPOLACIÓN ======
+        let saludo = `Hola mi nombre es ${nombre2} ${apellido} y me dicen ${nickname}`;
+        console.log(saludo);
+
+        let ul = `<ul>
+            <li>Lista</li>
+            <li>Lista</li>
+            <li>Lista</li>
+            <li>Lista</li>
+            <li>Lista</li>
+            <li>Lista</li>
+            <li>Lista</li>
+        </ul>`
+
+        console.log(ul)
+
+
+        // ===== NUMEROS ======
+        let a = 2;
+        let b = new Number(1);
+        let c = 7.19;
+        let d = '5.6';
+
+        console.log(a,b);
+        console.log(c)
+        console.log(c.toFixed(1));
+        // Este redondea los decimales
+        console.log(c.toFixed(5));
+        console.log(parseInt(c));
+        // parseInt lo convierte en numero entero
+        console.log(parseFloat(c));
+        // parseFloat lo convierte en numero decimal
+
+        console.log(typeof c, typeof d);
+        console.log(a + b);
+        console.log(c + parseInt(d));
+        // Suma el number más la cadena y lo parsea a entero
+        console.log(c + parseFloat(d));
+        // Suma el number más la cadena y lo parsea a decimal
+
+        // Que es lo mismo q esto
+        console.log(c + Number.parseInt(d));
+        console.log(c + Number.parseFloat(d));
+
+    // ===== VALORES BOOLEANOS ======
+        let verdadero = true;
+        let falso = false;
+
+        console.log(verdadero, falso);
+        console.log(typeof verdadero, typeof falso);
+
+        console.log(Boolean(0));
+        console.log(Boolean(''));
+        console.log(Boolean(0));
+        console.log(Boolean(0));
+
+        // ===== NULL UNDEFINED NaN ======
+
+        // Undefined indica que no se ha iniciado la variable y el valor está ausente
+        let indefinida;
+        console.log(indefinida);
+
+        // Null indica la ausencia intencional o accidental de un valor
+        let nulo = null;
+        console.log(nulo);
+
+        //NaN Not a Number
+        let noEsUnNumero = 'hola' * 3.7;
+        console.log(noEsUnNumero);
+
+        // ===== FUNCIONES ======
+        // Función declarada
+        function primeraFuncion (){
+            console.log('uno')
+            console.log('dos')
+            console.log('tres')
+        }
+
+        // Invocación de función
+        primeraFuncion();
+
+        function funcionValores (){
+            console.log('uno')
+            console.log('dos')
+            console.log('tres')
+
+            return 'La función a devuelto un valor'
+        }
+
+        // let valorDeFuncion = funcionValores();
+
+        // console.log(valorDeFuncion)
+        // Para imprimir el return, debo asignarle la función a una variable, para llamarla luego
+        // con un console.log
+
+        // Todo el código después del return se ignora
+
+        function saludar(nombre = 'desconocido', edad = 0){
+
+            console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`);
+        }
+
+        saludar('oscar',34);
+
+
+        funcionDeclarada();
+        // Estas funciones js las pone en un scope global, por eso puedo invocarla antes e creala
+
+        function funcionDeclarada(){
+            console.log('Esto es una función declarada, puedo invocarla en cualquier momento, incluso antes de crearla');
+        }
+
+        // === Funcion expresada / Anonima ===
+        // A diferencia de las declaradas estas no se pueden invocar antes de crearlas
+        const funcionExpresada = function(){
+            console.log('Esto es una funcion expresada o anonima, se le ha asignado como valor a una variable')
+        }
+
+        funcionExpresada();
+
+        // ===== ARRAYS ======
+        const array1 = [];
+        const array2 = [1,true,'Hola',['A', 'B', 'C']];
+
+        console.log(array1);
+        console.log(array2);
+        console.log(array2[2])
+
+        // Accedo la letra C dentro del array anidado
+        console.log(array2[3])
+        console.log(array2[3][2])
+
+        const e = Array(10).fill('Hola');
+        console.log(e)
+
+        const colores2 = ['amarillo', 'Azul', 'Rojo'];
+        console.log(colores)
+
+        colores.push('negro');
+        console.log(colores)
+
+        colores.pop('negro');
+        console.log(colores)
+
+        // Con el for each puedo rellenar elementos con elementos del array
+        colores2.forEach(function (el, index){
+            console.log(`<li id="${index}">${el}</li>`)
+        });
+
+        // ===== OBJETOS ======
+
+        const user = {
+            nombre : 'Oscar',
+            nickname : 'Pollo',
+            edad : 34,
+            soltero : false,
+            pasatiempos : ['Bici', 'Futbol', 'Videojuegos'],
+            // Puedo meter objetos dentro de objetos
+            contacto : {
+                tel : 319,
+                mail : '1@1.com',
+            },
+
+            saludar : function (){
+                console.log('Hola a todos :)');
+            },
+
+            decirNombre : function(){
+                console.log(`Hola, mi nombre es ${this.nombre} y me dicen ${this.nickname} y me puedes llamr al ${this.contacto.tel}`)
+            }
+        }
+
+        console.log(user);
+        console.log(user.nombre);
+        console.log(user.pasatiempos[0]);
+        console.log(user.contacto.mail);
+        user.saludar();
+
+        user.decirNombre();
+        console.log(Object.keys(user));
+        console.log(Object.values(user));
+        console.log(user.hasOwnProperty('nacimiento'));
+
+                // === Operadores ===
+        // Aritmeticos
+        let operadores1 = 5 + (5-10) + 3;
+        let modulo = 10%2;
+
+        console.log(operadores1);
+        console.log(modulo);
+
+        // Relacionales
+        // < > >= <= == === != !===
+
+        console.log(9>8); //true 
+        console.log(7>7); //false
+        console.log(7>=7); //true
+
+        /* = es asignación
+        == Comparación solo de valor
+        === Comparación de tipo de dato y valor
+        */
+
+        console.log(7 === 7); //true
+        console.log('7' === 7); //false
+        console.log(0 === false); //false
+
+        let i = 1;
+
+        i += 2 // i = i + 2
+
+
+
+    </script>
+</body>
+</html>
