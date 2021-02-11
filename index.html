@@ -299,22 +299,31 @@
 
         console.log(9>8); //true 
         console.log(7>7); //false
-        console.log(7>=7); //true
+        console.log(7>=7); //true porque 7 si es igual a 7
+        console.log(9>=8); //true porque 9 si es mayor a 8
 
-        /* = es asignación
-        == Comparación solo de valor
+        /* = es asignación de variable
+        == Comparación de valores
         === Comparación de tipo de dato y valor
         */
 
         console.log(7 === 7); //true
-        console.log('7' === 7); //false
-        console.log(0 === false); //false
+        console.log('7' == 7); //true porque por doble igual si es lo mismo
+        console.log('7' === 7); //false porque string ≠ number
+        console.log(0 === false); //false porque ambos tienden a falso, pero number ≠ boolean
 
+
+        // Operadores de Incremento / Devremento
         let i = 1;
 
         i += 2 // i = i + 2
+        console.log(`El valor de i es ${i}`)
+        //Estoy sumando el valor que ya tiene i más 2
 
-
+        let divi = 10;
+        divi /= 2
+        console.log(`El valor de d es ${divi}`);
+        // estoy dividiendo el valor que ya tiene divi entre 2
 
     </script>
 </body>
