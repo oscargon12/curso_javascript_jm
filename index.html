@@ -11,6 +11,8 @@
     <p>Hola</p>
 
     <script>
+
+        console.log('==== VARIABLES ====')
         // Alcance global (mala practica)
         var hola = 'Hola mundo';
 
@@ -75,7 +77,7 @@
         console.log(objeto);
         console.log(colores);
 
-
+        console.log('==== TIPOS DE DATOS ====')
         // ===== STRINGS ======
         let nombre = '   Oscar';
         let nickname = 'Pollo';
@@ -95,7 +97,7 @@
         // Split separa las cadenas
         );
 
-
+        console.log('==== CONCATENACIÓN ====')
         // ===== CONCATENACIÓN ======
         let nombre2 = 'Oscar';
         let apellido = 'Gonzalez';
@@ -119,8 +121,9 @@
 
         console.log(ul)
 
-
         // ===== NUMEROS ======
+        console.log('==== NÚMEROS ====')
+
         let a = 2;
         let b = new Number(1);
         let c = 7.19;
@@ -148,6 +151,8 @@
         console.log(c + Number.parseFloat(d));
 
     // ===== VALORES BOOLEANOS ======
+    console.log('==== BOOLEANOS ====')
+
         let verdadero = true;
         let falso = false;
 
@@ -174,6 +179,8 @@
         console.log(noEsUnNumero);
 
         // ===== FUNCIONES ======
+        console.log('==== FUNCIONES ====')
+
         // Función declarada
         function primeraFuncion (){
             console.log('uno')
@@ -224,6 +231,8 @@
         funcionExpresada();
 
         // ===== ARRAYS ======
+        console.log('==== ARRAYS ====')
+
         const array1 = [];
         const array2 = [1,true,'Hola',['A', 'B', 'C']];
 
@@ -253,6 +262,7 @@
         });
 
         // ===== OBJETOS ======
+        console.log('==== OBJETOS ====')
 
         const user = {
             nombre : 'Oscar',
@@ -286,13 +296,15 @@
         console.log(Object.values(user));
         console.log(user.hasOwnProperty('nacimiento'));
 
-                // === Operadores ===
+        // === Operadores ===
+        console.log('==== OPERADORES ====')
+
         // Aritmeticos
         let operadores1 = 5 + (5-10) + 3;
         let modulo = 10%2;
 
-        console.log(operadores1);
-        console.log(modulo);
+        console.log( `el resultado es  ${operadores1}`);
+        console.log(`el módulo es  ${modulo}`);
 
         // Relacionales
         // < > >= <= == === != !===
@@ -313,7 +325,7 @@
         console.log(0 === false); //false porque ambos tienden a falso, pero number ≠ boolean
 
 
-        // Operadores de Incremento / Devremento
+        // Operadores de Incremento / Decremento
         let i = 1;
 
         i += 2 // i = i + 2
@@ -324,6 +336,147 @@
         divi /= 2
         console.log(`El valor de d es ${divi}`);
         // estoy dividiendo el valor que ya tiene divi entre 2
+
+        // Operador unario
+        i++;
+        console.log(`Console.log después del i++ ${i}`)
+        // Se recomienda siempre usar los operadores antes de la variable ( i++ )
+
+        // === Operadores lógicos ===
+        // ! not Niega lo que es true, lo vuelve false y viceversa
+        // || or Almenos una condición de 2 o más se debe cumplir
+        // && and Todas las condiciones se deben cumplir
+
+        console.log(!true);
+        console.log((9 === 9)||( 9 === '9' ));
+        console.log((9 === 9) && ( 9 === '9' ));
+
+
+        // === Estructuras de control ===
+        // Hay estructuras secuenciales que son como las que hemos visto hasta aquí
+        // Estructuras condicionales: tomar decisiones, o no, dependiendo de ciertas condiciones
+        // Loops Estructuras repetitivas
+
+            
+
+        let edad = 12;
+        if (edad >= 18 ){
+            console.log('Eres mayor de edad');
+        }else{
+            console.log('Eres menor de edad');
+        }
+
+        // Buenos días 6hrs - 11hrs
+        // buenas tardes 12hrs - 18hrs
+        // buenas noches 19hrs - 23hrs
+        // Deja dormir 24hrs - 5hrs
+
+        let hora = 10;
+        if (hora >= 0 && hora <= 5){
+            console.log('Dejame dormir')
+        } else if (hora >= 6 && hora <= 11){
+            console.log('Buenos días')
+        } else if (hora >= 12 && hora <= 18){
+            console.log('Buenas tardes')
+        } else {
+            console.log('Buenas noches')
+        }
+
+        console.log('==Operador ternario==');
+        // Este me permite declarar el if else con otra sintaxis (Solo 2 opciones)
+        let eresMayor = (edad >= 18) 
+        ? 'Eres mayor'
+        : 'Eres menor';
+        console.log(eresMayor);
+
+
+        console.log('==== SWITCH CASE ====')
+        /* 
+        domingo 0
+        lunes 1
+        martes 2
+        miercoles 3
+        jueves 4
+        viernes 5
+        sabado 6 
+        */
+       let dia = 20;
+        switch (dia){
+            case 0:
+                console.log('Domingo');
+            break;
+            case 1:
+                console.log('Lunes');
+            break;
+            case 2:
+                console.log('Martes');
+            break;
+            case 3:
+                console.log('Miercoles');
+            break;
+            case 4:
+                console.log('Jueves');
+            break;
+            case 5:
+                console.log('Viernes');
+            break;
+            case 6:
+                console.log('Sabado');
+            break;
+            default:
+                console.log('El día no existe');
+            break;
+        }
+        
+    console.log('==== CICLOS ====');
+    // == While ==
+    let contador = 0;
+    while (contador < 10){
+        // A estas estructuras es necesario incluirles un aumento o decremento
+        console.log( 'while ' + contador)
+        contador++;
+    }
+    console.log(`Acá contador vale ${contador}`)
+ 
+    do{
+        console.log(contador);
+        contador++;
+    }while(contador < 10);
+    // En este se ejecuta al menos una vez
+
+    console.log('==== CICLO FOR ====');
+
+    for (let i = 0; i < 10; i++){
+        console.log('For ' + i);
+    }
+
+    let numeros2 = [10,20,30,40,50,60,70,80,90,100];
+
+    for(let i = 0; i < numeros2.length; i++){
+        console.log(numeros2[i]);
+    }
+
+    // For in me permite recorrer kay, values o ambos de un objeto
+    const user2 = {
+        nombre: 'Oscar',
+        Apellido: 'Gonzalez',
+        edad: 34
+    }
+
+    for(const propiedad in user2){
+        console.log(`key: ${propiedad} / value: ${user2[propiedad]}`)
+    }
+
+    //For of Me permite recorrer un array o una cadena de texto
+    for(const elemento of numeros2){
+        console.log(elemento);
+    }
+
+    let hi = 'hello world';
+    for(const caracter of hi){
+        console.log(caracter)
+    }
+
 
     </script>
 </body>
