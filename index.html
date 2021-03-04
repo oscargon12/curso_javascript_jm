@@ -194,27 +194,30 @@
         function funcionValores (){
             console.log('uno')
             console.log('dos')
+            return 'La función a devuelto un valor, pero el return cortó todo'
             console.log('tres')
 
-            return 'La función a devuelto un valor'
         }
 
-        // let valorDeFuncion = funcionValores();
+        let valorDeFuncion = funcionValores();
 
-        // console.log(valorDeFuncion)
+        console.log(valorDeFuncion)
         // Para imprimir el return, debo asignarle la función a una variable, para llamarla luego
         // con un console.log
 
         // Todo el código después del return se ignora
 
         function saludar(nombre = 'desconocido', edad = 0){
+            // Si cuando invoque esta funcion no le agrego parametros,
+            // por defecto pone estos: nombre = 'desconocido', edad = 0
 
             console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`);
         }
 
-        saludar('oscar',34);
+        saludar('oscar',35);
 
 
+        // Funciones declaradas Vs expresadas
         funcionDeclarada();
         // Estas funciones js las pone en un scope global, por eso puedo invocarla antes e creala
 
@@ -244,15 +247,18 @@
         console.log(array2[3])
         console.log(array2[3][2])
 
-        const e = Array(10).fill('Hola');
+        // Este arreglo repite 12 veces el string Hola
+        const e = Array(12).fill('Hola');
         console.log(e)
 
         const colores2 = ['amarillo', 'Azul', 'Rojo'];
         console.log(colores)
 
+        // push: Ubica el color negro en la ultima posición del array
         colores.push('negro');
         console.log(colores)
 
+        // pop: Quita el color negro de la ultima posición del array
         colores.pop('negro');
         console.log(colores)
 
@@ -261,9 +267,12 @@
             console.log(`<li id="${index}">${el}</li>`)
         });
 
+
         // ===== OBJETOS ======
         console.log('==== OBJETOS ====')
 
+        // Dentro de un objeto las variables se llaman atributos
+        // Y las funciones se llaman métodos
         const user = {
             nombre : 'Oscar',
             nickname : 'Pollo',
@@ -286,22 +295,30 @@
         }
 
         console.log(user);
-        console.log(user.nombre);
-        console.log(user.pasatiempos[0]);
+        console.log(user.nombre); // Oscar
+        console.log(user.pasatiempos[0]); //Bici
         console.log(user.contacto.mail);
-        user.saludar();
+        user.saludar(); // Hola a todos :)
 
         user.decirNombre();
-        console.log(Object.keys(user));
-        console.log(Object.values(user));
-        console.log(user.hasOwnProperty('nacimiento'));
 
-        // === Operadores ===
+        //Este console me imprime las llaves
+        console.log(Object.keys(user));
+        
+        //Este console me imprime los valores
+        console.log(Object.values(user));
+
+        // este me permite saber si el objeto tiene la propiedad nombre
+        console.log(user.hasOwnProperty('nombre')); // true
+        console.log(user.hasOwnProperty('nacimiento')); // false
+
+        // ==== Operadores ====
         console.log('==== OPERADORES ====')
 
         // Aritmeticos
-        let operadores1 = 5 + (5-10) + 3;
-        let modulo = 10%2;
+        let operadores1 = 5 + (5-10) * 3; // 10
+        let modulo = 10%2; // 1
+        // Si el módulo % de una división entre 2 da cero, significa que es par
 
         console.log( `el resultado es  ${operadores1}`);
         console.log(`el módulo es  ${modulo}`);
@@ -324,6 +341,7 @@
         console.log('7' === 7); //false porque string ≠ number
         console.log(0 === false); //false porque ambos tienden a falso, pero number ≠ boolean
 
+        // Siempre es mejor comparar con triple igual ===
 
         // Operadores de Incremento / Decremento
         let i = 1;
@@ -348,16 +366,20 @@
         // && and Todas las condiciones se deben cumplir
 
         console.log(!true);
+
+        // con OR almenos una de las condiciones se debe cumplir
         console.log((9 === 9)||( 9 === '9' ));
+
+        // con And todas las condiciones se deben cumplir
         console.log((9 === 9) && ( 9 === '9' ));
 
 
-        // === Estructuras de control ===
+        // ==== Estructuras de control ====
         // Hay estructuras secuenciales que son como las que hemos visto hasta aquí
         // Estructuras condicionales: tomar decisiones, o no, dependiendo de ciertas condiciones
         // Loops Estructuras repetitivas
 
-            
+        console.log('==== Estructuras de control ====')
 
         let edad = 12;
         if (edad >= 18 ){
@@ -365,6 +387,8 @@
         }else{
             console.log('Eres menor de edad');
         }
+        // Si dejo solo el < estoy excluyendo el numero contra el que comparto
+        // Si dejo <= lo incluyo
 
         // Buenos días 6hrs - 11hrs
         // buenas tardes 12hrs - 18hrs
@@ -384,13 +408,13 @@
 
         console.log('==Operador ternario==');
         // Este me permite declarar el if else con otra sintaxis (Solo 2 opciones)
-        let eresMayor = (edad >= 18) 
-        ? 'Eres mayor'
-        : 'Eres menor';
-        console.log(eresMayor);
+        let eresMayor = (edad >= 18) // Lo defino como variable
+        ? 'Eres mayor' //Parte verdadera
+        : 'Eres menor'; //Parte verdadera
+        console.log(eresMayor); //imprimiendo la variable
 
 
-        console.log('==== SWITCH CASE ====')
+        console.log('== SWITCH CASE ==')
         /* 
         domingo 0
         lunes 1
@@ -477,6 +501,8 @@
     for(const caracter of hi){
         console.log(caracter)
     }
+
+    setTimeout(() => {console.log('Esto se mostrará después de 5 segundos')}, 5000 );
 
     </script>
 </body>
