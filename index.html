@@ -606,7 +606,7 @@
     perro.ladrar();
 
     console.log('Con objetos literales')
-    // Con los objetos literales puedo resumir abreviar la construcción de los objetos
+    // Con los objetos literales puedo abreviar la construcción de los objetos
     // si el key y el value son el mismo
 
     // Así 👇 se abrevia
@@ -654,6 +654,73 @@
         const arr3 = [...arr1, ...arr2];
 
         console.log(arr3)
+
+        // ===== ARRAY FUNCTIONS ======
+            console.log('==== ARRAY FUNCTIONS ====')
+
+            //Funcion expresada
+            const salu2 = function () {
+                console.log('Hola');
+            }
+            salu2();
+
+            // Las arrow function tienen el return implicito
+            // Arrow function Si la función tiene más de 1 linea
+            const saludar2 = () => {
+                console.log('Holii');
+                console.log('Si la función tiene más de 1 linea');
+            }
+            saludar2();
+
+            const saludar3 = (nombre) => {
+                console.log(`Hola ${nombre} cómo estás`)
+            }
+            saludar3('Oscar');
+
+            // Arrow function Si la función tiene 1 linea
+            // Si no recibe parametros si hay que poner los parentesis
+            const saludar4 = () => console.log(`Si la función tiene 1 linea`);
+            saludar4();
+
+            // Si la función tiene 1 solo parametro se pueden quitar los parametros
+            const saludar5 = nombre => console.log(`holiii ${nombre} como estas`)
+            saludar5('oscar');
+
+            const sumar2 = (a, b) => a + b;
+            console.log(sumar2(4, 7));
+
+            //Si la funcion tiene varias lineas se respeta la estructura base
+            const variasLineas = () => {
+                console.log('Uno');
+                console.log('Dos');
+                console.log('Tres');
+            }
+            variasLineas();
+
+            // Tambien puedo usar las arrow en ciclos forEach
+            // Este es un for each con funcion normal
+            const numeros6 = [1, 2, 3, 4, 5];
+
+            numeros6.forEach(function (el, index) {
+                console.log(`Elemento ${el} está en la posición ${index}`);
+            })
+
+
+            console.log('forEach con arrow function');
+            // Este es un forEach con arrow function
+            numeros6.forEach((el, index) => console.log(`Elemento ${el} está en la posición ${index}`));
+
+            // Los metodos de los objetos no es recomendable usar arrow function, porque altera el scope apuntando a un contexto global
+            const perrito = {
+                nombre: 'Kenai',
+                ladrar() { // Es mejor usarlas como on¡bjetos literales
+                    console.log(this)
+                }
+            }
+
+            perrito.ladrar() // imprime esto { nombre: 'Kenai', ladrar: ƒ ladrar() }
+
+
 
     </script>
 </body>
