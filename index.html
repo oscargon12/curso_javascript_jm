@@ -452,6 +452,7 @@
             break;
         }
         
+    // ===== CICLOS ======
     console.log('==== CICLOS ====');
     // == While ==
     let contador = 0;
@@ -466,7 +467,7 @@
         console.log(contador);
         contador++;
     }while(contador < 10);
-    // En este se ejecuta al menos una vez
+    // En este se ejecuta al menos una vez 
 
     console.log('==== CICLO FOR ====');
 
@@ -481,15 +482,18 @@
     }
 
     console.log('==== CICLO IN / OF ====');
+
+    // For in = Objetos -//- For of = Arrays o strings
     // For in me permite recorrer key, values o ambos de un objeto
     const user2 = {
         nombre: 'Oscar',
         Apellido: 'Gonzalez',
-        edad: 34
+        edad: 35,
     }
 
     for(const propiedad in user2){
         console.log(`key: ${propiedad} / value: ${user2[propiedad]}`)
+        // Acá si no me sirve la notación de punto, 👆 debe ser de corchetes cuadrados
     }
 
     //For of Me permite recorrer un array o una cadena de texto
@@ -502,7 +506,154 @@
         console.log(caracter)
     }
 
-    setTimeout(() => {console.log('Esto se mostrará después de 5 segundos')}, 5000 );
+    setTimeout(() => {console.log('Tomemos una pausa de 5 segundos')}, 5000 );
+
+    // ===== MANEJO DE ERRORES ======
+    console.log('==== MANEJO DE ERRORES ====');
+
+    try {
+        console.log('En el try se agrega el código a evaluar')
+        noExiste;
+        console.log('Segundo mensaje en try, no se ejecuta si hay error')
+    } catch (error) {
+        console.log('Catch captura los errores en el bloque try, si no hay error no hace nada');
+        console.log(error);
+    } finally{
+        console.log('Finally se ejecuta siempre al final de un try-catch')
+    }
+
+    try {
+        let numero3 = 'y';
+        if (isNaN(numero3)){
+            //👆 isNaN me valida que si sea un number
+            throw new Error('El caracter introducido no es un número');
+        }
+        // Antes de ejecutar 👇 la operación del console.log, debo 👆 validar que sea un número
+        console.log(numero3 * numero3) // Si hay error esta linea no se ejecuta
+    } catch (error) {
+        console.warn(`Se produjo el siguiente error ${error}`)
+    }
+
+    // ===== BREAK & CONTINUE ======
+    console.log('==== BREAK & CONTINUE ====');
+
+    const numeros4 = [1,2,3,4,5,6,7,8,9,0];
+
+    for (let i = 0; i < numeros4.length; i ++){
+        if(i === 5){
+            break; // 👈 Este break corta el barrido del array en el index 5
+        }
+        console.log(numeros4[i])
+    }
+    
+    for (let i = 0; i < numeros4.length; i ++){
+        if(i === 5){
+            continue; // 👈 Este continue se salta la posición 5 del array
+        }
+        console.log(numeros4[i])
+    }
+    
+    console.log('Imprimiendo solo pares')
+    for (let i = 0; i < numeros4.length; i ++){
+        if(i%2 === 0){
+            continue; // 👈 Este continue se salta la posición 5 del array
+        }
+        console.log(numeros4[i])
+    }
+
+    // ===== DESTRUCTURING ======
+    console.log('==== DESTRUCTURING ====');
+    // Se usa para traer datos de arrays u objetos de forma más dinámica
+
+    console.log('Sin destructuring')
+    let numeros5 = [1,2,3];
+
+    let uno = numeros5[0],
+        dos = numeros5[1],
+        tres = numeros5[2]
+    
+    console.log(uno,dos,tres)
+
+    console.log('Con destructuring')
+    const[one,two,three] = numeros5;
+
+    console.log(one,two,three);
+
+    const persona = {
+        name: 'Oscar',
+        lastname: 'Gonzalez',
+        age:35,
+    }
+
+    const {name, age, lastname} = persona;
+    console.log(name, lastname, age);
+
+    // ===== OBJETOS LITERALES ======
+    console.log('==== OBJETOS LITERALES ====');
+
+    let nombrePerro = 'kenai';
+    let edadPerro = 10;
+
+    const perro = {
+        nombrePerro: nombrePerro, // Acá key y value son el mismo y se pueden resumir
+        edadPerro: edadPerro,
+        ladrar: function () {
+            console.log('Guauu !!')
+        }
+    }
+
+    console.log(perro);
+    perro.ladrar();
+
+    console.log('Con objetos literales')
+    // Con los objetos literales puedo resumir abreviar la construcción de los objetos
+    // si el key y el value son el mismo
+
+    // Así 👇 se abrevia
+    const dog = {
+        nombrePerro, // solo se pone una vez y la coma
+        edadPerro,
+        ladrar(){ //Se pone son dos puntos y sin la palabra function
+            console.log('Guauuu Guauu !!!')
+        }
+    }
+
+    console.log(dog);
+    dog.ladrar();
+
+    // ===== PARAMETROS REST ======
+    console.log('==== PARAMETROS REST ====')
+    // Sirven para agregar parámetros a una función que pueden o no ser infinitos
+
+    function sumar (a,b, ...c) {
+        let resultado = a + b;
+
+        // Si quiero sumar más parámetros creo un ciclo forEach
+        c.forEach(function (n) {
+            resultado += n
+        }) // Sin importar cuantos sean, los parametros serñan recibidos
+
+        return resultado;
+    }
+    console.log(sumar(1,2));
+    console.log(sumar(1,2,3));
+    console.log(sumar(1,2,3,4));
+    console.log(sumar(1,2,3,4,5)); // Y así sucesivamente
+
+    // ===== SPREAD OPERATOR ======
+    console.log('==== SPREAD OPERATOR ====')
+    // Operador de propagación Permite la fusión entre arrays 👉👈 
+
+    const arr1 = [1,2,3,4,5],
+        arr2 = [6,7,8,9,0]
+
+        console.log(arr1);
+        console.log(arr2);
+
+        // Es muy facil 👇 fusionar los arrays, se anteponen los tres puntos
+        const arr3 = [...arr1, ...arr2];
+
+        console.log(arr3)
 
     </script>
 </body>
