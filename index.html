@@ -656,7 +656,7 @@
         console.log(arr3)
 
         // ===== ARRAY FUNCTIONS ======
-            console.log('==== ARRAY FUNCTIONS ====')
+        console.log('==== ARRAY FUNCTIONS ====')
 
             //Funcion expresada
             const salu2 = function () {
@@ -720,7 +720,57 @@
 
             perrito.ladrar() // imprime esto { nombre: 'Kenai', ladrar: ƒ ladrar() }
 
+    // ===== PROTOTIPOS ======
+    console.log('==== PROTOTIPOS ====')
+    /* Clases: Molde o modelo a seguir
+    Objetos. Instancia de una clase
+    Atributos: Caracteristica  propiedad del objeto, 
+    son variables dentro del objeto
+    Métodos: Son las acciones que un objeto puede realizar
+    son funciones dentro del objeto */
 
+    // Esto es un objeto normal
+    const animal = {
+        nombre: 'snoopy',
+        sonar(){
+            console.log('Hago sonidos porq estoy vivo');
+        }
+    }
+
+    console.log(animal);
+
+    // Esto es una función constructora
+    // Las funciones cnstructoras se escriben en UpperCamelCase
+    function AnimalMolde(nombre, genero){
+        // Atributos
+        this.nombre = nombre;
+        this.genero = genero;
+
+        //Metodos los saque del constructor
+    }
+
+    /* yo puedo sacar los metodos del prototipo, para que al instanciarlo 
+    x veces este método no se repita y solo se llame cuando yo lo 
+    quiera traer mejora en rendimiento y memoria en la programacion */
+    AnimalMolde.prototype.sonar = function (){
+            console.log('Hago ruido porq estoy vivo');
+        }
+    
+    AnimalMolde.prototype.saludar = function (){
+            console.log(`Hola mi nombre es ${this.nombre}`);
+        }
+
+    //Instanciando al molde
+    console.log('Instanciando al AnimalMolde'); 
+    const bolt = new AnimalMolde ('Bolt', 'macho');
+    console.log(bolt); 
+    
+    const mitens = new AnimalMolde ('Mittens', 'hembra');
+    console.log(mitens); 
+
+    // Trayendo los metodos
+    bolt.saludar();
+    mitens.saludar();
 
     </script>
 </body>
