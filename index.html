@@ -722,12 +722,10 @@
 
     // ===== PROTOTIPOS ======
     console.log('==== PROTOTIPOS ====')
-    /* Clases: Molde o modelo a seguir
-    Objetos. Instancia de una clase
-    Atributos: Caracteristica  propiedad del objeto, 
-    son variables dentro del objeto
-    Métodos: Son las acciones que un objeto puede realizar
-    son funciones dentro del objeto */
+/* Clases: Molde o modelo a seguir
+Objetos. Instancia de una clase
+Atributos: Caracteristica  propiedad del objeto, son variables dentro del objeto
+Métodos: Son las acciones que un objeto puede realizar son funciones dentro del objeto */
 
     // Esto es un objeto normal
     const animal = {
@@ -817,6 +815,7 @@
         constructor(nombre, genero, tamanio){ 
             super(nombre, genero); // con el metodo "super" se manda llamar al constructor de la clase padre
             this.tamanio = tamanio;
+            this.raza = null;
         }
         // Sobreescribiendo los metodos
         sonar(){
@@ -825,7 +824,23 @@
         ladrar2(){
             console.log('Guauu guauu guauu');
         }
+
+        static queEres(){ //El static hace que no tenga que instanciar la clase
+            console.log('Los perros son los mejores animales y mascotas del mundo');
+        }
+
+        // Los setters y getters permiten establecer y obtener 
+        // el valor de atributos de una clase
+        get getRaza(){ // El prefijo set dice que es un metodo obtenedor
+            return this.raza;
+        }
+        
+        set setRaza(raza){ // set modifica la propiedad
+            this.raza = raza;
+        }
     }
+
+    Dog.queEres(); // Instanciando solo el metodo estatico
 
     // Instanciando 
     const rex = new Dog('Rex', 'Macho', 'grande'),
@@ -838,6 +853,16 @@
     console.log(kitty);
     kitty.saludar();
     kitty.sonar();
+
+    // Aunque les get y set son métodos, se llaman como atributos
+    console.log(rex.getRaza);
+    rex.setRaza = 'Pastor aleman'; // Acá envío el atributo
+    console.log(rex.getRaza);
+
+     // ===== METODOS ESTATICOS ======
+     console.log('==== METODOS ESTATICOS ====')
+     // Un metodo estatico se puede ejecutar sin tener que instanciar la clase
+     //Ver linea 828
 
     </script>
 </body>
