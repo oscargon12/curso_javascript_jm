@@ -656,7 +656,7 @@
         console.log(arr3)
 
         // ===== ARRAY FUNCTIONS ======
-            console.log('==== ARRAY FUNCTIONS ====')
+        console.log('==== ARRAY FUNCTIONS ====')
 
             //Funcion expresada
             const salu2 = function () {
@@ -720,6 +720,124 @@
 
             perrito.ladrar() // imprime esto { nombre: 'Kenai', ladrar: ƒ ladrar() }
 
+    // ===== PROTOTIPOS ======
+    console.log('==== PROTOTIPOS ====')
+    /* Clases: Molde o modelo a seguir
+    Objetos. Instancia de una clase
+    Atributos: Caracteristica  propiedad del objeto, 
+    son variables dentro del objeto
+    Métodos: Son las acciones que un objeto puede realizar
+    son funciones dentro del objeto */
+
+    // Esto es un objeto normal
+    const animal = {
+        nombre: 'snoopy',
+        sonar(){
+            console.log('Hago sonidos porq estoy vivo');
+        }
+    }
+
+    console.log(animal);
+
+    // Esto es una función constructora
+    // Las funciones cnstructoras se escriben en UpperCamelCase
+    function AnimalMolde(nombre, genero){
+        // Atributos
+        this.nombre = nombre;
+        this.genero = genero;
+
+        //Metodos los saco del constructor
+    }
+
+    /* yo puedo sacar los metodos del prototipo, para que al instanciarlo 
+    x veces este método no se repita y solo se llame cuando yo lo 
+    quiera traer mejora en rendimiento y memoria en la programacion */
+    AnimalMolde.prototype.sonar = function (){
+            console.log('Hago ruido porq estoy vivo');
+        }
+    
+    AnimalMolde.prototype.saludar = function (){
+            console.log(`Hola mi nombre es ${this.nombre}`);
+        }
+
+
+    // Herencia prototipica
+    function Perro(nombre, genero, tamanio) {
+        this.super = AnimalMolde;
+        this.super(nombre, genero);
+        this.tamanio = tamanio;
+    }
+
+    // Perro esta heredando de AnimalMolde
+    Perro.prototype = new AnimalMolde();
+    Perro.prototype.constructor = Perro;
+
+    // Sobreescritura del metodo
+    Perro.prototype.sonar = function () {
+        console.log('Soy un perro y mi sonido es un ladrido');
+    }
+
+    Perro.prototype.ladrar = function () {
+        console.log('Guauuu Guauuu !!!')
+    }
+
+    //Instanciando al molde
+    console.log('Instanciando al AnimalMolde'); 
+    const bolt = new Perro ('Bolt', 'macho', 'mediano'); // Con el new Perro llamo la herencia de AnimalMolde Perro
+    console.log(bolt); 
+    
+    const mitens = new AnimalMolde ('Mittens', 'hembra');
+    console.log(mitens); 
+
+    // Trayendo los metodos
+    bolt.saludar();
+    bolt.ladrar();
+    mitens.saludar();
+
+    // ===== CLASES Y HERIENCIA ======
+    console.log('==== CLASES Y HERIENCIA ====')
+
+    // Así se crea una clase
+    class AnimalModel { // Las clases no reciben parámetros
+        // Atributos
+        constructor(nombre, genero){ // los parametros los reciben en el constructor
+            this.nombre = nombre;
+            this.genero = genero;
+        }
+    //Los métodos los escribo como objetos literales
+        sonar (){
+            console.log('hago ruidos porq estoy vivo');
+        }
+        saludar (){
+            console.log(`Me llamo ${this.nombre}`)
+        }
+    }
+    // Creo la herencia antes de insanciar
+    class Dog extends AnimalMolde{ //Con extends, Perro hereda las características de AnimalMolde
+        constructor(nombre, genero, tamanio){ 
+            super(nombre, genero); // con el metodo "super" se manda llamar al constructor de la clase padre
+            this.tamanio = tamanio;
+        }
+        // Sobreescribiendo los metodos
+        sonar(){
+            console.log('Soy un perro y ladro');
+        }
+        ladrar2(){
+            console.log('Guauu guauu guauu');
+        }
+    }
+
+    // Instanciando 
+    const rex = new Dog('Rex', 'Macho', 'grande'),
+        kitty = new AnimalModel('Kitty', 'Hembra');
+
+    console.log(rex);
+    rex.saludar();
+    rex.sonar();
+    rex.ladrar2();
+    console.log(kitty);
+    kitty.saludar();
+    kitty.sonar();
 
     </script>
 </body>
