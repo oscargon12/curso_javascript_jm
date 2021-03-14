@@ -864,6 +864,101 @@ Métodos: Son las acciones que un objeto puede realizar son funciones dentro del
      // Un metodo estatico se puede ejecutar sin tener que instanciar la clase
      //Ver linea 828
 
+    // ===== OBJETO CONSOLE ======
+    console.log('==== OBJETO CONSOLE ====')
+
+    console.log(console); // Es un objeto que muestra todas las caracteristicas y metodos del console
+    console.error('Esto es un error'); // Muestra mensajes en consola como error
+    console.warn('Esto es un aviso');
+    console.info('Mensaje informativo'); // muy parecido al log
+    console.log('Registro de lo que pasa en la aplicación');
+
+    let name2 = 'Oscar',
+        lastname2 = 'Gonzalez',
+        age2 = 35;
+
+    console.log(name2, lastname2, age2);
+    console.log(`Hola mi nombre es ${name2} ${lastname2} y tengo ${age2} años`); // Interpolación
+    console.log(`Hola mi nombre es %s %s y tengo %d años`, name2, lastname2, age2); // Uso de almohadillas %
+    console.clear(); // Limpia la consola
+
+    console.log(window);
+    console.log(document); // Muestra todo el documento html DOM
+    console.dir(document); // Muestra me muestra las propiedades y atributos del DOM
+    // Sirve para mostrar documentos como si fueran objetos
+
+    console.groupCollapsed ('Los cursos de @jonmircha en youtube');
+    // group trae el grupo desplegado
+    // groupCollapsed trae el grupo replegado / colapsado
+    console.log('Curso de javascript');
+    console.log('Curso de CSS');
+    console.log('Curso de PWAs');
+    console.log('Curso de Flexbox');
+    console.log('Curso de Diseño y programación web');
+    console.groupEnd();
+
+    console.clear();
+
+    const numbers = [1,2,3,4,5],
+    vocals = ['a', 'e', 'i', 'o', 'u'];
+
+    console.table(numbers); // Imprime una tabala del arreglo u objetos en consola
+    console.table(vocals);
+
+    console.table(rex); // Crea una tabla con el objeto rex
+
+    console.time('time test'); // Esta es la bandera inicial de la medición
+    const arregloMil = Array(1000) // Esta es otra forma de crear arrays
+
+    for(let i = 0; i < arregloMil.length; i++){
+        arregloMil[i] = i;
+    }
+
+    console.timeEnd('time test'); // Esta es la bandera final de la medición
+
+    for(let i = 0; i < 10; i ++){
+        console.count('Código for'); // Permite registrar el numero de veces que se ejecuta una acción
+        console.log(i);
+    }
+
+    console.clear();
+
+    let x = 1,
+        y = 2,
+        pruebaxy = 'X siempre debe ser menor que Y';
+
+    console.assert(x < y, {x,y,pruebaxy}); // dentro del console.asserts hago la validación de di hay error o no
+    
+    console.clear();
+    // ===== OBJETO DATE ======
+    console.log('==== OBJETO DATE ====')
+    console.log(Date()); // El objeto date me muestra la fecha actual
+    let fecha = new Date(); // Puedo convertir la fecha en variable así
+
+    console.log(fecha);
+    console.log(fecha.getDate()); // Día del mes
+    console.log(fecha.getDay()); // Día de la semana DLMMJVS - 0123456
+    console.log(fecha.getMonth()); // Día deL mes
+    console.log(fecha.getFullYear()); // Año en curso
+    console.log(fecha.getHours()); // Horas
+    console.log(fecha.getMinutes()); // Minutos
+    console.log(fecha.getSeconds ()); // Segundos
+    console.log(fecha.getMilliseconds()); // Milisegundos
+    console.log(fecha.toString()); // Fecha como string
+    console.log(fecha.toDateString()); // Solo la fecha (sin GTM) en string
+    console.log(fecha.toLocaleString()); // Fecha y hora
+    console.log(fecha.toLocaleDateString()); // Solo Fecha
+    console.log(fecha.toLocaleTimeString()); // Solo hora
+    console.log(fecha.getTimezoneOffset()); // Mide minutos de la zona horaria
+    console.log(fecha.getUTCDate()); // Mide horas en meridiano de grenwich
+    console.log(fecha.getUTCHours()); // Mide horas en meridiano de grenwich
+    console.log(Date.now()); // Imprime el time stamp parseado de la fecha
+
+    let cumpleOscar = new Date(1986, 2, 3);
+    console.log(cumpleOscar);
+
+
+    
     </script>
 </body>
 </html>
