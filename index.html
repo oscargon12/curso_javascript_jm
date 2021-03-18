@@ -961,8 +961,95 @@ Métodos: Son las acciones que un objeto puede realizar son funciones dentro del
     // ===== OBJETO MATH ======
     console.log('==== OBJETO MATH ====')
     
+    console.log(Math);
+    console.log(Math.PI); // Están en mayus porq nunca cambian
+    console.log(Math.abs(-7.8)); // Devuelve el valor absoluto de un numero es decir abs -7.8 = 7.8
+    console.log(Math.ceil(7.8)); // Redondea hacia arriba
+    console.log(Math.floor(7.8)); // Redondea hacia abajo
+    console.log(Math.round(7.8)); // Redondea hacia el que esté más cerca
+    console.log(Math.sqrt(81)); // Raiz cuadrada del parámetro
+    console.log(Math.pow(2,5)); // Potencia de, primer parámetro base, segundo exponencia
+    console.log(Math.sign(-7.8)); // Si el número es negativo devuelve -1, si es positivo 1 7 si es 0, devuelve 0
+    
+    console.log(Math.random()); // Da un número aleatorio entre 0 y 1
+    console.log(Math.random() * 1000); // puedo convertirlo a decimal
+    console.log(Math.round(Math.random() * 1000)); // y quitarle los decimales con round
 
-//hola
+
+    console.clear();
+    // ===== OPERADORES DE CORTO CIRCUITO ======
+    console.log('==== OPERADORES DE CORTO CIRCUITO ====')
+    // Permiten agregar un valor por defecto, similar a los parámetros default de las dunciones
+    // OR Carga por default el valor de la izquierda cuando el valor de la izquierda en la expresión, es true
+
+    const saludar6 = (nombre3) => {
+        nombre3 = nombre3 || 'Desconocido';
+        console.log(`Hola ${nombre3}`);
+    }
+    
+    saludar6();
+    //Si no le doy un parametro, pone por default del valor de la derecha del OR
+
+    console.log('string' || 'Valor de la derecha'); // Imprime 'string'
+    console.log(19 || 'Valor de la derecha'); // Imprime 19
+    console.log(true || 'Valor de la derecha'); // Imprime true
+    console.log([] || 'Valor de la derecha'); // Imprime un array vacío
+    console.log({} || 'Valor de la derecha'); // Imprime un objeto vacío
+
+    console.log(false || 'Valor de la derecha'); // Imprime 'Valor de la derecha'
+    console.log(0 || 'Valor de la derecha'); // Imprime 'Valor de la derecha'
+
+    console.log('Cambio por AND')
+    // AND Carga por default el valor de la izquierda cuando el valor de la izquierda en la expresión, es false (invierte el OR)
+    console.log([] && 'Valor de la derecha'); // Imprime un array vacío
+    console.log({} && 'Valor de la derecha'); // Imprime un objeto vacío
+
+    console.log(false && 'Valor de la derecha'); // Imprime 'Valor de la derecha'
+    console.log(0 && 'Valor de la derecha'); // Imprime 'Valor de la derecha'
+
+    
+    console.clear();
+    // ===== ALERT, CONFIRM Y PROMPT ======
+    console.log('==== ALERT, CONFIRM Y PROMPT ====')
+    
+/*     let alerta = alert('Esto es una ALERTA!'),
+        confirmacion = confirm('Vas a confirmar la acción'), // Se diferencia del alert porque tiene opciones (ok cancel)
+        aviso = prompt('Este permite ingresar un valor, ¿cuál vas a ingresar?'); //Este permite ingresar un valor
+ */
+        /* console.log(alerta); // Devuelve undefined
+        console.log(confirmacion); // Devuelve true o false
+        console.log(aviso); // devuelve el mismo valor, Si no le ingresa nada devuelve null */
+
+    // ===== EXPRESIONES REGULARES ======
+    console.log('==== EXPRESIONES REGULARES ====')
+    // Sirven para validar, por ejemplo:
+
+    let cadena = 'Lorem ipsum dolor sir amet lorem 3'
+/*     let expReg = new RegExp('lorem', 'ig'); // Sintaxis 1
+        console.log(expReg.test(cadena)); // Este método prueba y devuelve un true o false
+        console.log(expReg.exec(cadena)); // Muestra donde encontró la coincidencia */
+    
+    // Sintaxis 2
+    // let expReg2 = /lorem/ig; // // Si dejo el Lorem, la expresión regular buscará coincidencia en la cadena i = ignore g = global
+    // let expReg2 = /\d/ig; // si pongo la expresión \d buscará numeros
+    // let expReg2 = /[0-9]/ig;  // Valida si hay numeros entre 0 y 9
+    let expReg2 = /lorem{1,2}/ig;  // Valida si lorem está repetido de 1 a 2 veces
+        console.log(expReg2.test(cadena)); // Este método prueba y devuelve un true o false
+        console.log(expReg2.exec(cadena)); // Muestra donde encontró la coincidencia
+
+    console.clear();
+    // ===== FUNCIONES ANONIMAS AUTOEJECUTABLES (No funcionó) ======
+    console.log('==== FUNCIONES ANONIMAS AUTOEJECUTABLES ====')
+
+    // alert('Hola'); alert es una función y los () indican ejecución
+    
+    (function () {
+        console.log("Mi primer IIFE");
+    })();
+
+    console.clear();
+    // ===== FUNCIONES ANONIMAS AUTOEJECUTABLES (No funcionó) ======
+    console.log('==== FUNCIONES ANONIMAS AUTOEJECUTABLES ====')
 
     
     </script>
