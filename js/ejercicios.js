@@ -108,10 +108,57 @@ stringInvert('Holaaaa');
 
 
 
-/* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2. */
+/* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, 
+pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2. */
+console.log('=== Ejercicio 6 ===')
 
+const repWords = (phrase, word) => {
+  let cadena4 = phrase;
 
-/* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true. */
+  let cadenaSeparada = cadena4.split(' ');
+  console.log(cadenaSeparada)
+  let repetidos = {}; // Array asociativo
 
+  cadenaSeparada.forEach(function(n){
+    repetidos[n] = (repetidos[n] || 0) + 1; // Construcción de array asociativo
+  });
 
-/* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
+console.log(repetidos);
+
+}
+
+repWords('hola mundo, hola');
+
+/* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo 
+(que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true. */
+console.log('=== Ejercicio 7 ===')
+
+const palindrome = (str) => {
+  let cadena3 = str;
+
+  if (typeof cadena3 === 'string' && cadena3.length > 0){
+    let cadenaSeparada = cadena3.split('');
+
+    let cadenaRevertida = [...cadenaSeparada].reverse(); // Creo un nuevo array con spread operator, distinto del ejercicio 5
+    console.log(cadenaSeparada, cadenaRevertida);
+    
+    let stringSeparada = cadenaSeparada.toString(); // convierto los array en string
+    let stringRevertida = cadenaRevertida.toString();
+    console.log(stringRevertida, stringSeparada);
+    (stringSeparada === stringRevertida) ?console.log(true) :console.warn(false) //Condicional con operador ternario
+  } else{
+      console.log('No ingresaste una cadena');
+  }
+}
+
+palindrome('anitalavalatina');
+
+/* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, 
+pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
+console.log('=== Ejercicio 8 ===')
+
+const repeatChar = (str, p) => {
+  console.log('Hola2');
+}
+
+repeatChar();
