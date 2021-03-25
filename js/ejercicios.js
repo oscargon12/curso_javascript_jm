@@ -95,16 +95,21 @@ const stringInvert = (str) => {
   } else{
       console.log('No ingresaste una cadena');
   }
-
-  /*   (typeof cadena3 === 'string' && cadena3.length > 0)
-  ?console.log(let cadenaRevertida = cadena3.reverse())
-  :console.warn('No sirve')
-
-  console.log(cadenaRevertida) */
-
 }
 
 stringInvert('Holaaaa');
+
+
+console.log('=== Solución profe ejerc 5 ===');
+  
+const invertirCadena = (cadena = '') => { // El parámetro tiene un valor por defecto vacío
+  (!cadena) // Si cadena es falsa
+  ? console.log('No ingresaste una cadena')
+  : console.log(cadena.split('').reverse().join(''));
+  // Acaseparo con split, invierto con reverse y vuelvo a unir con join
+}
+
+invertirCadena('Ola que ase');
 
 
 
@@ -158,7 +163,23 @@ pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 
 console.log('=== Ejercicio 8 ===')
 
 const repeatChar = (str, p) => {
-  console.log('Hola2');
+  let pattern = str;
+
+  console.log(pattern);
+
+  let stringSeparado = pattern.split(',');
+  console.log(stringSeparado);
 }
 
-repeatChar();
+repeatChar('xyz1,xyz2,xyz3');
+
+
+/* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600. */
+
+/* 10) Programa una función que reciba un número y evalúe si es 
+capicúa o no (que se lee igual en un sentido que en otro), pe.
+miFuncion(2002) devolverá true. */
+
+/* 11) Programa una función que calcule el factorial de un número (El 
+  factorial de un entero positivo n, se define como el producto de todos 
+  los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120. */
