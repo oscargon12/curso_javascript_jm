@@ -162,24 +162,86 @@ palindrome('anitalavalatina');
 pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
 console.log('=== Ejercicio 8 ===')
 
-const repeatChar = (str, p) => {
-  let pattern = str;
-
-  console.log(pattern);
-
-  let stringSeparado = pattern.split(',');
-  console.log(stringSeparado);
-}
-
-repeatChar('xyz1,xyz2,xyz3');
+const eliminarCaracteres = ( texto = "", patron = "" ) => 
+  
+  (!texto) // Si no ingreso un texto
+   ? console.warn('No ingresaste un texto') // Entonces imprimir esto
+   : (!patron) // o... Si no ingresó patrón
+      ? console.warn('No ingresaste un patrón') // Entonces imprimir esto
+      : console.info(texto.replace(new RegExp(patron, 'ig'), '')); // o... 
+      //Reemplazar el texto (Primer parametro expresion regular con el patron, segundo parametro con que se reemplaza)
+      // ig: bandera i no discrimina entre mayus y minus, bandera g hace que no se detenga en el primer patrón
+      
+    eliminarCaracteres();
+    eliminarCaracteres('xyz1, xyz2, xyz3, xyz4');
+    eliminarCaracteres('xyz1, xyz2, xyz3, xyz4', 'xy');
 
 
 /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600. */
+
+console.log('=== Ejercicio 9 ===')
+
+const randomNum = (min, max) => { // Los parametros definen el rango
+  let rangeNum = max - min; // Rango = mayor - menor
+  let randomNum = Math.random() * (rangeNum + 1); // Multiplico el rango por el aleatorio dado por Math.random
+  randomNum = Math.round(randomNum); // Redondeo el numero con round
+  console.log(min + randomNum); // Sumo desde el numero inferior para que arranque desde el rango
+}
+
+randomNum(501, 600);
 
 /* 10) Programa una función que reciba un número y evalúe si es 
 capicúa o no (que se lee igual en un sentido que en otro), pe.
 miFuncion(2002) devolverá true. */
 
+console.log('=== Ejercicio 10 ===')
+
+const equalNum = (n) => {
+  let numberIn = n; // recibo el numero del parametro como valor de la variable
+
+  if ( typeof numberIn === 'number' && numberIn !== 0 ){
+    let strInv = numberIn.toString().split('').reverse().join(''); // convierto el numero a string, lo separo, li invierto y lo uno de nuevo
+    let numInv = parseInt(strInv); // el string invertido lo convierto en numero
+    console.log(`El numero ingresado fue ${numberIn} invertido es ${numInv}`);
+
+    (numberIn === numInv) // Operador ternario Si el original es igual al invertido entonces...
+    ? console.log(true)
+    : console.warn(false)
+
+  } else {
+    console.log('No ingresaste un número');
+  }
+}
+equalNum(5775);
+
 /* 11) Programa una función que calcule el factorial de un número (El 
   factorial de un entero positivo n, se define como el producto de todos 
   los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120. */
+console.log('=== Ejercicio 11 ===');
+
+const factorial = (n) => { // Parametro define el numero
+  let facNum = n
+
+  if (typeof facNum === 'number' && facNum > 0 && facNum !== 0 ) {
+
+    for (let i = n-1; i > 0; i--){ // Ciclo donde i = numero - 1 (para que no se multiplique con el mismo) y i-- decrece hasta 1
+       n *= i; // n = n *1 (n = 5 * 4, 20 * 3, 60 * 2, 120 * 1
+       // n = n * i
+       console.log(n)
+     }
+  } else {
+    console.log('No ingresaste un número');
+  }
+}
+
+factorial(5);
+
+
+/* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no,
+pe. miFuncion(7) devolverá true. */
+
+/* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar. */
+
+/* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa,
+  pe. miFuncion(0,"C") devolverá 32°F. */
+
