@@ -239,9 +239,73 @@ factorial(5);
 
 /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no,
 pe. miFuncion(7) devolverá true. */
+console.log('=== Ejercicio 12 ===');
+
+function primo(numero) {
+
+  console.log("Has pasado el numero: " + numero);
+  console.log("Inicio bucle desde 2 hasta " + (numero - 1));
+
+  for (var i = 2; i < numero; i++) {
+
+    console.log("Modulo entre " + numero + " y " + i + " = " + (numero % i));
+
+    if (numero % i === 0) {
+      console.log(i + " es un multiplo de " + numero);
+      console.log(numero + " no es un numero primo porque " + i + " es un multiplo");
+      return false;
+    }
+
+  }
+
+  if (numero === 1) {
+    console.log("Me has pasado el numero 1, recuerda que NO es un numero primo");
+  } else {
+    console.log("Como el numero ingresado no tuvo mas múltiplos entonces determinamos que SI es un numero primo.");
+  }
+
+  console.log("-------------------------------------");
+}
+
+primo(7);
 
 /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar. */
+console.log('=== Ejercicio 13 ===');
+
+const parImpar = (n) => {
+  let numPar = n;
+
+  if( typeof numPar === 'number'){
+      (numPar % 2 === 0)
+      ? console.log(`el número ${numPar} es Par`)
+      : console.log(`el número ${numPar} es Impar`)
+  } else {
+    console.warn('Debes ingresar un número')
+  }
+}
+
+parImpar(4);
 
 /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa,
   pe. miFuncion(0,"C") devolverá 32°F. */
+console.log('=== Ejercicio 14 ===');
 
+const conversor = (g, t) => {
+
+  if( typeof g === 'number' && typeof t === 'string'){
+    console.log(g, t)
+    if( t === 'C' ){
+      let toFaren =  (g * 1.8) + 32;
+      console.log(`${g} grados celcius, son ${toFaren} grados farenheit`);
+    } else if ( t === 'F' ) {
+      let toCelci =  (g - 32) / 1.8;
+      console.log(`${g} grados Farenheit, son ${toCelci} grados celcius`);
+    }
+
+  } else {
+    console.log('El primero debe ser un número y el 2do debe ser la letra C o F')
+  }
+
+}
+
+conversor(0, 'C');
