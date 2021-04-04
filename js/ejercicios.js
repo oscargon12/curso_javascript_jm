@@ -241,7 +241,7 @@ factorial(5);
 pe. miFuncion(7) devolverá true. */
 console.log('=== Ejercicio 12 ===');
 
-function primo(numero) {
+/* function primo(numero) {
 
   console.log("Has pasado el numero: " + numero);
   console.log("Inicio bucle desde 2 hasta " + (numero - 1));
@@ -267,7 +267,42 @@ function primo(numero) {
   console.log("-------------------------------------");
 }
 
-primo(7);
+primo(7); */
+
+console.log('===Ejercicio profe=');
+
+const numeroPrimo = (numero = undefined) => {
+
+  // Validaciones
+  // Si no ingresa nada
+  if (numero === undefined) return console.warn('No ingresaste un número');
+  
+  // Si no ingresa un número
+  if (typeof numero !== 'number') return console.error(`El valor ${numero} no es un número`);
+
+  // Numeros NO permitidos
+  if (numero === 0) return console.error('El numero no puede ser 0');
+  if (numero === 1) return console.error('El numero no puede ser 1');
+
+  // Con el método sign valido si es negativo o positivo
+  if (Math.sign(numero) === -1) console.error('El numero no puede ser negatigo');
+  
+  // Si divisible es false el numero no es primo
+  let divisible = false;
+
+  for(let i = 2; i < numero; i++ ){ // Inicio el ciclo con i valiendo 2
+    if(numero % i === 0){ // Si el residuo de numero / 2 es 0
+      divisible = true; // Entonces divisible pasa a true, si es diviisible entre 2 NO es primo
+      break; // El break para el ciclo cuando encuentre un i que divida exactamente a número
+    }
+  }
+
+  return (divisible) // Osea, si divisible tiene su valor origninal (false)
+  ? console.log(`El número ${numero} NO es primo`)
+  : console.log(`El número ${numero} SI es primo`)
+}
+
+numeroPrimo(15);
 
 /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar. */
 console.log('=== Ejercicio 13 ===');
@@ -275,7 +310,7 @@ console.log('=== Ejercicio 13 ===');
 const parImpar = (n) => {
   let numPar = n;
 
-  if( typeof numPar === 'number'){
+  if( typeof numPar === 'number' && numPar !== undefined){
       (numPar % 2 === 0)
       ? console.log(`el número ${numPar} es Par`)
       : console.log(`el número ${numPar} es Impar`)
@@ -296,10 +331,12 @@ const conversor = (g, t) => {
     console.log(g, t)
     if( t === 'C' ){
       let toFaren =  (g * 1.8) + 32;
-      console.log(`${g} grados celcius, son ${toFaren} grados farenheit`);
+      console.log(`${g} grados celcius, son ${Math.round(toFaren)} grados farenheit`);
     } else if ( t === 'F' ) {
       let toCelci =  (g - 32) / 1.8;
-      console.log(`${g} grados Farenheit, son ${toCelci} grados celcius`);
+      console.log(`${g} grados Farenheit, son ${Math.round(toCelci)} grados celcius`);
+    } else if (t !== 'C' || t !== 'F') {
+      console.warn('Valor de unidad no reconocido');
     }
 
   } else {
@@ -308,4 +345,71 @@ const conversor = (g, t) => {
 
 }
 
-conversor(0, 'C');
+conversor(100, 'F');
+
+
+/* 15) Programa una función para convertir números de base binaria a decimal
+ y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.*/
+ console.log('=== Ejercicio 15 ===');
+
+ console.log(Math.pow(2, 3));
+
+ // Convertir el binario en string y en un ciclo multiplicarlos por las exponencias, 
+ 
+
+
+
+/* 16) Programa una función que devuelva el monto final después de aplicar 
+un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800. */
+console.log('=== Ejercicio 16 ===');
+
+const discount = (p = undefined, d = undefined) => {
+
+  let price = p;
+  let discount = d;
+
+  // Si no ingresa nada
+  if (price === undefined || price === undefined) return console.warn('No ingresaste un Valor, o un descuento');
+  
+  // Si no ingresa un número
+  if (typeof price !== 'number') return console.warn(`El valor ${price} no es un número`);
+  if (typeof discount !== 'number') return console.warn(`El valor ${discount} no es un número`);
+  if (price <= 0) return console.warn(`El valor ${price} no pudede ser menor o igual a 0`);
+
+  let discountValue = (price*discount) / 100;
+  let totalPrice = price - discountValue;
+  return console.log(`El descuento del ${discount}% sobre ${price} da como total un precio de ${totalPrice}`);
+}
+
+discount(100, 20);
+
+
+/* 17) Programa una función que dada una fecha válida determine cuantos años
+ han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) 
+ devolverá 35 años (en 2020). */
+
+ console.log('=== Ejercicio 17 ===');
+
+ const yearCounter = (a = undefined, m = undefined, d = undefined) => {
+
+  if (a === undefined || typeof a !== 'number') console.warn('El valor a no puede ser indefinido y debe ser un número');
+  if (m === undefined || typeof m !== 'number') console.warn('El valor m no puede ser indefinido y debe ser un número');
+  if (d === undefined || typeof d !== 'number') console.warn('El valor d no puede ser indefinido y debe ser un número');
+
+  let today = new Date().getFullYear();
+  console.log(today);
+  
+  let randomDate = new Date(a, m, d).getFullYear();
+  console.log(randomDate);
+
+  if(randomDate < today){
+    let CurrentTime = today - randomDate;
+    console.log(`Entre ${randomDate} y ${today} han pasado ${CurrentTime} años`);
+  } else if (randomDate > today){
+    let CurrentTime = randomDate - today;
+    console.log(`Entre ${today} y ${randomDate} pasarán ${CurrentTime} años`);
+  }
+  
+ }
+
+ yearCounter(1986, 2, 2); // Solo el mes se lee como array con base 0
