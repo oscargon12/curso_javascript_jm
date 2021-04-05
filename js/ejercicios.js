@@ -106,7 +106,7 @@ const invertirCadena = (cadena = '') => { // El parámetro tiene un valor por de
   (!cadena) // Si cadena es falsa
   ? console.log('No ingresaste una cadena')
   : console.log(cadena.split('').reverse().join(''));
-  // Acaseparo con split, invierto con reverse y vuelvo a unir con join
+  // Acá separo con split, invierto con reverse y vuelvo a unir con join
 }
 
 invertirCadena('Ola que ase');
@@ -353,8 +353,36 @@ conversor(100, 'F');
  console.log('=== Ejercicio 15 ===');
 
  console.log(Math.pow(2, 3));
+ const binary = (n = undefined, b = undefined) =>{
+  let numberToConvert = n;
+  let numberBase = b;
 
- // Convertir el binario en string y en un ciclo multiplicarlos por las exponencias, 
+  if( numberBase === 2 ){ // Si la base es 2 voy a convertir binarios
+    console.log('Vas a pasar un binario a decimal');
+    
+    let numsArray = Array.from(String(numberToConvert), Number); // convierto el numero en un array de numeros
+    console.log(numsArray);
+
+    let numsRevert = numsArray.reverse(); // Invierto el array
+    console.log(numsRevert);
+
+    numsRevert.forEach(function (el, index){ // Con un forEach sincronizo el indice del array con la exponencia a multiplicar 
+      
+    let testFirt = numsRevert[index] * Math.pow(2,index);
+    if ( numsRevert[index] !== 0 ) {
+      console.log(`Este es el index: ${index} y este el elemento ${el}`)
+      console.log(testFirt); // Omito los que se multiplican con 0
+    }
+    
+    });
+  
+  } else if ( numberBase === 10) { // Si la base es 10 voy a convertir decimales
+    console.log('Vas a pasar un decimal a binario');
+  }
+ }
+
+ binary(10010011, 2)
+ 
  
 
 
