@@ -357,6 +357,11 @@ conversor(100, 'F');
   let numberToConvert = n;
   let numberBase = b;
 
+  if (n === undefined) console.warn('No ingresaste un número');
+  if (n === undefined) console.warn('No ingresaste una base');
+  if (typeof n !== 'number') console.warn('Lo que ingresaste no es un número');
+  if (typeof b !== 'number') console.warn('Lo que ingresaste no es una base');
+  
   if( numberBase === 2 ){ // Si la base es 2 voy a convertir binarios
     console.log('Vas a pasar un binario a decimal');
     
@@ -382,22 +387,45 @@ conversor(100, 'F');
  }
 
  binary(10010011, 2)
- 
- 
 
+ console.log('== Solución profe ==');
 
+ const binarioDecimal = (numero = undefined, base = undefined) => {
+  if (numero === undefined) console.warn('Hey no ingresaste un número');
+  if (base === undefined) console.warn('Hey no ingresaste una base');
+  if (typeof numero !== 'number') console.warn('Lo que ingresaste no es un número');
+  if (typeof base !== 'number') console.warn('Lo que ingresaste no es una base');
+
+  if (base === 2){
+    console.log('convirtiendo de binario a decimal');
+    
+    return console.info(`${numero} base ${base} = ${parseInt(numero, base)} base 10`);
+    // Esto hace todo solo, con el parseInt y dos argumentos numero y base 😑
+    // Originalmente el parseInt convierte de string a numero
+  } else if (base === 10) {
+    console.log('Convirtiendo de decimal a binario');
+    return console.info(`${numero} base ${base} = ${(numero.toString(2))} base 2`);
+  } else {
+    console.warn('El tipo de base no es válido');
+  }
+ }
+ 
+binarioDecimal(100, 2); 
+binarioDecimal(10010011, 2); 
+binarioDecimal(114, 10); 
 
 /* 16) Programa una función que devuelva el monto final después de aplicar 
 un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800. */
 console.log('=== Ejercicio 16 ===');
 
-const discount = (p = undefined, d = undefined) => {
+const discount = (p = undefined, d = 0) => {
+// El descuento queda en cero po
 
   let price = p;
   let discount = d;
 
   // Si no ingresa nada
-  if (price === undefined || price === undefined) return console.warn('No ingresaste un Valor, o un descuento');
+  if (price === undefined) return console.warn('No ingresaste un Valor, o un descuento');
   
   // Si no ingresa un número
   if (typeof price !== 'number') return console.warn(`El valor ${price} no es un número`);
@@ -424,16 +452,16 @@ discount(100, 20);
   if (m === undefined || typeof m !== 'number') console.warn('El valor m no puede ser indefinido y debe ser un número');
   if (d === undefined || typeof d !== 'number') console.warn('El valor d no puede ser indefinido y debe ser un número');
 
-  let today = new Date().getFullYear();
+  let today = new Date().getFullYear(); // getFullYear sin parámetros me da la fecha actual
   console.log(today);
   
-  let randomDate = new Date(a, m, d).getFullYear();
+  let randomDate = new Date(a, m, d).getFullYear(); // getFullYear con parametros me da la fecha que yo defina
   console.log(randomDate);
 
-  if(randomDate < today){
+  if(randomDate < today){ // Si la fecha random es menor a la actual
     let CurrentTime = today - randomDate;
     console.log(`Entre ${randomDate} y ${today} han pasado ${CurrentTime} años`);
-  } else if (randomDate > today){
+  } else if (randomDate > today){ // Si la fecha random es mayor a la actual
     let CurrentTime = randomDate - today;
     console.log(`Entre ${today} y ${randomDate} pasarán ${CurrentTime} años`);
   }
