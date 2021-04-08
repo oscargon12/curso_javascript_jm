@@ -464,8 +464,104 @@ discount(100, 20);
   } else if (randomDate > today){ // Si la fecha random es mayor a la actual
     let CurrentTime = randomDate - today;
     console.log(`Entre ${today} y ${randomDate} pasarán ${CurrentTime} años`);
+  } else {
+    console.log('No hay diferencia de años')
   }
   
  }
 
  yearCounter(1986, 2, 2); // Solo el mes se lee como array con base 0
+
+
+ console.log('== Solución Profe ==')
+
+ const calcularAnios = (fecha = undefined) => {
+
+  if (fecha === undefined) return console.log('No ingresaste fecha');
+
+  if (!(fecha instanceof Date)) return console.warn('No ingresaste una fecha válida');
+  // 👆 Esto valida el tipo fecha, ya que con el typeOf solo valida si es un objeto
+
+  let diferenciaFecha = new Date().getTime() - fecha.getTime(), // Esto saca la diferencia entre hoy y una fecha determinada
+      aniosEnMS = 1000 * 60 * 60 * 24 * 365,
+      // 1000 milisegundos es un segundo * 60 segundos * 60 minutos * 24 horas * 365 días nos da los años
+      aniosHumanos = Math.floor(diferenciaFecha / aniosEnMS); // Años humanos = diferencia de años en timeStamp / años en milisegundos
+   
+    return (Math.sign(aniosHumanos) === -1)
+      ? console.log(`Faltan ${Math.abs(aniosHumanos)} para el ${fecha.getFullYear()}`)
+      : (Math.sign(aniosHumanos) === 1)
+        ? console.log(`Han pasado ${aniosHumanos} años desde ${fecha.getFullYear()}`)
+        :console.log(`Estamos en el año actual ${fecha.getFullYear()}`)
+ }
+
+ calcularAnios(new Date(1986,2,3));
+ calcularAnios(new Date(2086,2,3));
+
+/* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, 
+pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5. */
+
+console.clear();
+console.log('=== Ejercicio 18 ===');
+
+const wordVowels = (mail = undefined) => {
+  let cadena = 'ipsum dolor sir amet lorem';
+
+  let expReg2 = /lorem/ig;
+  let wordVal = expReg2.test(cadena);
+  console.log(wordVal);
+  
+  (wordVal) 
+  ? console.log('Si existe lorem')
+  : console.log('NO existe lorem')
+  
+}
+wordVowels();
+
+/* 19) Programa una función que valide que un texto sea un nombre válido,
+pe. miFuncion("Jonathan MirCha") devolverá verdadero. */
+console.log('=== Ejercicio 19 ===');
+
+const nameValidation = (name = undefined) => {
+  let cadena = name
+
+  if ( name === undefined ) return console.log('No has ingresado nada')
+  if ( typeof name !== 'string' ) return console.log('No ingresaste un texto')
+
+  let expReg2 = /^[a-zA-Z ]+$/;
+  let wordVal = expReg2.test(cadena);
+  console.log(wordVal);
+  
+  (wordVal) 
+  ? console.log('Si es un nombre')
+  : console.log('NO es un nombre')
+  
+}
+
+nameValidation();
+nameValidation(3);
+nameValidation('Oscar');
+
+
+/* 20) Programa una función que valide que un texto sea un email válido,
+pe. miFuncion("jonmircha@gmail.com") devolverá verdadero. */
+console.log('=== Ejercicio 20 ===');
+
+const mailValidation = (mail = undefined) => {
+  let cadena = mail
+
+  if ( mail === undefined ) return console.log('No has ingresado nada')
+  if ( typeof mail !== 'string' ) return console.log('No ingresaste un texto')
+
+  let expReg2 = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  let wordVal = expReg2.test(cadena);
+  console.log(wordVal);
+  
+  (wordVal) 
+  ? console.log('Si es un correo electrónico')
+  : console.log('NO es un correo electrónico')
+  
+}
+mailValidation();
+mailValidation(5);
+mailValidation('testtest.com');
+mailValidation('test@test.com');
