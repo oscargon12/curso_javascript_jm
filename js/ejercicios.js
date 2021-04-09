@@ -503,19 +503,20 @@ pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5. */
 console.clear();
 console.log('=== Ejercicio 18 ===');
 
-const wordVowels = (mail = undefined) => {
-  let cadena = 'ipsum dolor sir amet lorem';
+const getVowels = (str = undefined) => {
 
-  let expReg2 = /lorem/ig;
-  let wordVal = expReg2.test(cadena);
-  console.log(wordVal);
-  
-  (wordVal) 
-  ? console.log('Si existe lorem')
-  : console.log('NO existe lorem')
-  
+  if (str === undefined) console.warn('No ingresaste nada');
+  if ( typeof str !== 'string') console.warn('No ingresaste texto');
+
+  let vowelNum = (str.match(/[aeiou]/gi) || "").length;
+  let consoNum = (str.match(/([b-d]|[f-h]|[j-n]|[p-t]|[v-z])/gi) || "").length;
+
+  console.log(`Vocales ${vowelNum}`);
+  console.log(`Consonantes ${consoNum}`);
+
 }
-wordVowels();
+getVowels("");
+getVowels("Hola mundo");
 
 /* 19) Programa una función que valide que un texto sea un nombre válido,
 pe. miFuncion("Jonathan MirCha") devolverá verdadero. */
