@@ -508,7 +508,7 @@ const getVowels = (str = undefined) => {
   if (str === undefined) console.warn('No ingresaste nada');
   if ( typeof str !== 'string') console.warn('No ingresaste texto');
 
-  let vowelNum = (str.match(/[aeiou]/gi) || "").length;
+  let vowelNum = (str.match(/[aeiouáéíóú]/gi) || "").length;
   let consoNum = (str.match(/([b-d]|[f-h]|[j-n]|[p-t]|[v-z])/gi) || "").length;
 
   console.log(`Vocales ${vowelNum}`);
@@ -517,6 +517,7 @@ const getVowels = (str = undefined) => {
 }
 getVowels("");
 getVowels("Hola mundo");
+getVowels("Murcielago");
 
 /* 19) Programa una función que valide que un texto sea un nombre válido,
 pe. miFuncion("Jonathan MirCha") devolverá verdadero. */
@@ -528,13 +529,13 @@ const nameValidation = (name = undefined) => {
   if ( name === undefined ) return console.log('No has ingresado nada')
   if ( typeof name !== 'string' ) return console.log('No ingresaste un texto')
 
-  let expReg2 = /^[a-zA-Z ]+$/;
+  let expReg2 = /^[a-zA-Z\s ]+$/;
   let wordVal = expReg2.test(cadena);
   console.log(wordVal);
   
   (wordVal) 
-  ? console.log('Si es un nombre')
-  : console.log('NO es un nombre')
+  ? console.log(`${cadena} Si es un nombre`)
+  : console.log(`${cadena} NO es un nombre`)
   
 }
 
@@ -553,7 +554,7 @@ const mailValidation = (mail = undefined) => {
   if ( mail === undefined ) return console.log('No has ingresado nada')
   if ( typeof mail !== 'string' ) return console.log('No ingresaste un texto')
 
-  let expReg2 = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  let expReg2 = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i;
   let wordVal = expReg2.test(cadena);
   console.log(wordVal);
   
@@ -566,3 +567,15 @@ mailValidation();
 mailValidation(5);
 mailValidation('testtest.com');
 mailValidation('test@test.com');
+
+
+/* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, 
+pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25]. */
+
+
+/* 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, 
+pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60]. */
+
+
+/* 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, 
+pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}. */
