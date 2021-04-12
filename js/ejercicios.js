@@ -569,13 +569,89 @@ mailValidation('testtest.com');
 mailValidation('test@test.com');
 
 
-/* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, 
+/* 21) Programa una función que dado un array numérico devuelve 
+otro array con los números elevados al cuadrado, 
 pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25]. */
+console.clear();
+console.log('=== Ejercicio 21 ===');
 
+const powArray = (nums = undefined) => {
+  let numsArr = nums;
+  // console.log(numsArr);
 
-/* 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, 
+  if (nums === undefined) console.warn('No has ingresado nada');
+  if (!Array.isArray(numsArr)) console.warn('No ingresaste un array');  
+  if (typeof numsArr.el !== 'number') console.warn('No es un array de numeros');
+  
+  numsArr.forEach(function (el, index) {
+    //console.log(`Elemento ${el} está en la posición ${index}`);
+    let newPowArray = (Math.pow(el, 2));
+    console.log(newPowArray);
+})
+}
+
+//powArray('Hola');
+powArray(['e', 'w', 'f']);
+powArray([1, 4, 5]);
+ 
+/* 22) Programa una función que dado un array devuelva el número mas alto 
+y el más bajo de dicho array, 
 pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60]. */
+console.log('=== Ejercicio 22 ===');
+
+const highLow = (arrayNums) =>{
+
+  let numsHL = arrayNums;
+  if (arrayNums === undefined) console.warn('No has ingresado nada');
+  if (!Array.isArray(numsHL)) console.warn('No ingresaste un array');  
+  if (typeof numsHL.i !== 'number') console.warn('No es un array de numeros');
+
+  let max = Math.max(...numsHL);
+  let min = Math.min(...numsHL);
+
+  let highLow = [max, min];
+  console.log(highLow);
+  
+}
+
+// highLow('Hola');
+// highLow(['e', 'w', 'f']);
+highLow([123,34535,77]);
 
 
-/* 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, 
-pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}. */
+/* 23) Programa una función que dado un array de números devuelva un 
+objeto con 2 arreglos en el primero almacena los números pares y en 
+el segundo los impares, 
+pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], 
+impares: [1,3,5,7,9]}. */
+console.log('=== Ejercicio 23 ===');
+
+const pairOdd = (allNums) =>{
+
+  let numsAll = allNums;
+
+  numsAll.forEach(function (el, index) {
+    let pairOddArr = el % 2;
+
+    if(el % 2 === 0){
+      let pairNums = [el];
+      let pairNumsArr = [...pairNums];
+      
+      console.log(pairNumsArr);
+    } else if (el % 2 === 1){
+      let oddNums = [el];
+      let oddNumsArr = [...oddNums];
+    }
+
+
+    
+})
+
+
+  console.log(numsAll);
+
+}
+
+pairOdd([1,2,3,4,5,6,7,8,9,0]);
+
+
