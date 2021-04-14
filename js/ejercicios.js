@@ -791,7 +791,16 @@ const promedio = (arr = unefined) => {
    }
 
    return console.log(
-     //arr.reduce
-   )
+     arr.reduce((total, num, index, arr) => {
+      total += num;
 
+      if (index === arr.length-1){
+        return `El promedio de ${arr.join(' + ')} es ${total / arr.length}`;
+      } else{
+       return total;
+     }
+    })
+   )
 }
+
+promedio([9,8,7,6,5,4,3,2,1,0]);
