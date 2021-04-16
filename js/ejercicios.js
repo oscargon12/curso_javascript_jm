@@ -804,3 +804,349 @@ const promedio = (arr = unefined) => {
 }
 
 promedio([9,8,7,6,5,4,3,2,1,0]);
+
+/* 27) Programa una clase llamada Pelicula.
+
+La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB,
+titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+
+  - Todos los datos del objeto son obligatorios.
+  - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+     7 restantes números.
+  - Valida que el título no rebase los 100 caracteres.
+  - Valida que el director no rebase los 50 caracteres.
+  - Valida que el año de estreno sea un número entero de 4 dígitos.
+  - Valida que el país o paises sea introducidos en forma de arreglo.
+  - Valida que los géneros sean introducidos en forma de arreglo.
+  - Valida que los géneros introducidos esten dentro de los géneros 
+     aceptados*.
+  - Crea un método estático que devuelva los géneros aceptados*.
+  - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+    decimal de una posición.
+  - Crea un método que devuelva toda la ficha técnica de la película.
+  - Apartir de un arreglo con la información de 3 películas genera 3 
+    instancias de la clase de forma automatizada e imprime la ficha técnica 
+    de cada película.
+
+* Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary,
+Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV,
+Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western. */
+
+console.clear()
+console.log('=== Ejercicio 27 Big boss ===');
+
+//Model
+class movieModel {
+  constructor(id, titulo, director, anio, pais, genero, calificacion){
+    this.id = id, 
+    this.titulo = titulo,
+    this.director = director,
+    this.anio = anio,
+    this.pais = pais,
+    this.genero = genero,
+    this.calificacion = calificacion
+  }
+
+  presentar () {
+    console.log(`Soy una peli de ${this.genero}`)
+  }
+}
+
+
+//Herencia de la clase model
+/* class Movie extends movieModel{
+  constructor(id, titulo, director, anio, pais, genero, calificacion){
+    super(id, titulo, director, anio, pais, genero, calificacion);
+  }
+
+  static queEres(){ //El static hace que no tenga que instanciar la clase
+            console.log('Soy una peli');
+        }
+}
+
+const instanciando = () => {
+
+  let generes = ['Action', 'Adult', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+'Drama', 'Family', 'Fantasy', 'Film Noir', 'Game-Show', 'History', 'Horror', 'Musical', 'Music', 'Mystery', 'News', 'Reality-TV',
+'Romance', 'Sci-Fi', 'Short', 'Sport', 'Talk-Show', 'Thriller', 'War', 'Western'];
+
+  const back = new movieModel('tt0088763', 'Back to the future', 'Robert Zemeckis', 1985, ['USA'], generes[21], 8.5);
+  const tron = new Movie('tt1104001', 'TRON: Legacy', 'Joseph Kosinski', 2010, ['USA'], generes[21], 6.8);
+
+  if (tron.values < 7) return console.log('NO tiene todos las propiedades')  
+  //if (!(tron.genero instanceof Array)) return console.warn('El genero ingresado no es un array');
+
+  
+  let expReg2 = /[0-9]/i;
+  let wordVal = expReg2.test(tron.anio);
+  console.log(wordVal);
+  
+  if(wordVal) {
+    console.log('Si es un numero de 4 digitos')
+  } else {
+    console.log('No tiene 4 digitos')
+  }
+
+
+
+//Movie.queEres()
+console.log(back);
+console.log(tron);
+back.presentar()
+}
+
+instanciando(); */
+
+
+
+
+
+/* 
+class AnimalModel { // Las clases no reciben parámetros
+        // Atributos
+        constructor(nombre, genero){ // los parametros los reciben en el constructor
+            this.nombre = nombre;
+            this.genero = genero;
+        }
+    //Los métodos los escribo como objetos literales
+        sonar (){
+            console.log('hago ruidos porq estoy vivo');
+        }
+        saludar (){
+            console.log(`Me llamo ${this.nombre}`)
+        }
+}
+
+// Esto es una herencia de animalModel
+
+class Dog extends AnimalModel{ //Con extends, Perro hereda las características de AnimalMolde
+        constructor(nombre, genero, tamanio){ 
+            super(nombre, genero); // con el metodo "super" se manda llamar al constructor de la clase padre
+            this.tamanio = tamanio;
+            this.raza = null;
+        }
+        // Sobreescribiendo los metodos
+        sonar(){
+            console.log('Soy un perro y ladro');
+        }
+        ladrar2(){
+            console.log('Guauu guauu guauu');
+        }
+
+        static queEres(){ //El static hace que no tenga que instanciar la clase
+            console.log('Los perros son los mejores animales y mascotas del mundo');
+        }
+
+        // Los setters y getters permiten establecer y obtener 
+        // el valor de atributos de una clase
+        get getRaza(){ // El prefijo set dice que es un metodo obtenedor
+            return this.raza;
+        }
+        
+        set setRaza(raza){ // set modifica la propiedad
+            this.raza = raza;
+        }
+        
+    }
+
+    Dog.queEres();
+    
+
+
+     const pepito = new Dog('Pepito', 'macho', 'grande', 'canchoso');
+     const kitty = new AnimalModel('Kitty', 'Hembra');
+
+
+    console.log(pepito);
+    console.log(kitty);
+    kitty.saludar();
+    kitty.sonar();  */
+
+    class Pelicula {
+      constructor({id, titulo, director, estreno, pais, generos, calificacion}){
+        this.id = id; 
+        this.director = director;
+        this.titulo = titulo;
+        this.pais = pais;
+        this.estreno = estreno;
+        this.calificacion = calificacion;
+        this.generos = generos;
+
+        //Debo invocar en el constructor, los métodos creados más abajo
+        this.validarIMDB(id); // Llamo el metodo
+        this.validarTitulo(titulo);
+        this.validarDirector(director);
+        this.validarEstreno(estreno);
+        this.validarPais(pais);
+        this.validarGeneros(generos);
+        this.validarCalificacion(calificacion);
+      }
+
+      //Creo un atributo estatico que me permita llamar los generos
+      static get listaGeneros(){
+        return ['Action', 'Adult', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+'Drama', 'Family', 'Fantasy', 'Film Noir', 'Game-Show', 'History', 'Horror', 'Musical', 'Music', 'Mystery', 'News', 'Reality-TV',
+'Romance', 'Sci-Fi', 'Short', 'Sport', 'Talk-Show', 'Thriller', 'War', 'Western'];
+      }
+
+      // Luego un metodo estatico que los imprima en consola
+      static generosAceptados(){
+        console.log(`Los metodos aceptados son ${Pelicula.listaGeneros.join(', ')}`);
+      }
+
+      // == Métodos genéricos ==
+      // Todo lo hago dentro de la clase POO 🤯
+      // Primero 
+      // 👇 fucnión para validar que cadenas: reciben 2 parametros, la propiedad a evaluar (id, título o director)
+      // y el valor a evaluar (9, 50, 100)
+      validarCadena(propiedad, valor){
+        if(!valor) return console.warn(`${propiedad} "${valor}" está vacío`);
+        if(typeof valor !== 'string') return console.error(`${propiedad} "${valor}" NO es una cadena de texto`)
+
+        return true; // Si lo de arriba no ocurre devolvemos un true
+      }
+      // Esto lo puedo reutilizar con los valores tipo string
+
+      // Segundo 
+      // 👇 método para validar cantidad de caracteres 
+      validarLongitudCadena(propiedad, valor, longitud){ // Propiedad: titulo / valor: Peli / longitud: 100
+        if (valor.length > longitud) return console.error(`${propiedad} "${valor}" excede los caracteres permitidos: ${longitud}`);
+
+        return true
+      }
+
+      // Tercero
+      //Metodo para validar numeros
+      validarNumero(propiedad, valor){
+        if(!valor) return console.warn(`${propiedad} "${valor}" Está vacío`)
+        if(typeof valor !== 'number') return console.error(`${propiedad} "${valor}" no es un numero`);
+
+        return true
+      }
+
+      // Cuarto
+      // Validar arreglos
+      validarArreglo(propiedad, valor){
+        if(!valor) return console.warn(`${propiedad} ${valor} está vacío`);
+        if(!(valor instanceof Array)) return console.error(`${propiedad} ${valor} NO es un arreglo`);
+        // 👆 lo niego, osea si valor no es instancia de un array
+        for(let cadena of valor){
+          if(typeof cadena !== 'string') return console.error(`${cadena} no es un string`);
+        }
+
+        return true
+      }
+
+      // == Métodos especificos ==
+      // 👇 Método para validar id
+      validarIMDB(id){
+        if(this.validarCadena('IMDB id', id)){ // aprovecho el metodo validarCadena
+          if(!(/^([a-z]){2}([0-9]){7}$/.test(id))) // Si esta prueba sale negativa, entonces... 👇
+          return console.error(`IMDB id ${id} No es valido, debe tener 2 letras seguidas de 7 numeros`);
+        }
+      }
+      
+      validarTitulo(titulo){ // 👇 para que no se vaya vacío y sea cadena de texto
+        if(this.validarCadena('Titulo', titulo)) // aprovecho el metodo validarCadena, si da true... 👇
+          this.validarLongitudCadena('Titulo', titulo, 100);
+      }
+      
+      validarDirector(director){ // 👇 para que no se vaya vacío y sea cadena de texto
+        if(this.validarCadena('Director', director)) // aprovecho el metodo validarCadena, si da true... 👇
+          this.validarLongitudCadena('Director', director, 50);
+      }
+
+      validarEstreno(estreno){
+        if(this.validarNumero('Año de estreno', estreno)){ // aprovecho el metodo validarCadena
+          if(!(/^([0-9]){4}$/.test(estreno))) // Si esta prueba sale negativa, entonces... 👇
+          return console.error(`Año de ${estreno} No es valido, debe se un numero de 4 digitos`);
+        }
+      }
+
+      validarPais(pais){ //Solo recibe el país
+        this.validarArreglo('País', pais); // Solo ejecuta el metodo validar arreglo
+      } // Esto valida a true, si cumple las validaciones no hay nada en consola
+      
+      validarGeneros(generos){ 
+        if (this.validarArreglo('Generos', generos)){ //Si le validación de arreglo se cumple...
+          for (let genero of generos){ // Con este for of recorro los arreglos que ingresa el usuario (generos)
+            console.log(generos) // generos, es el valor que ingresa el usuario
+            if(!Pelicula.listaGeneros.includes(genero)){ // El metodo includes valida si generos son los mismos de listaGeneros
+              // Lo llamo de la clase Pelicula ya q es un metodo estatico
+              // Si no lo incluye entonces...
+              console.error(`Genero(s) incorrectos "${generos.join(', ')}"`);
+              Pelicula.generosAceptados(); // Llamo el metodo estático que imprime generos aceptados
+            }
+          }
+        }
+      } 
+
+      validarCalificacion(calificacion){
+        if(this.validarNumero('Calificacion', calificacion)){ // aprovecho el metodo validarCadena
+         return (calificacion < 0 || calificacion > 10) // Si el numero no está entre 0 y 10
+         ? console.error(`La calificación debe estar entre 0 y 10`)
+         : this.calificacion = calificacion.toFixed(1); // Si sí, calificación es igual a calificación.toFixed()
+         // Fixed, me permite decir a cuantos decimales corto un numero (1 despues de la coma)
+        }
+      }
+      // Método que imprime ficha tecnica
+      fichaTecnica(){
+        console.info(`Ficha técnica; \n
+        Título: "${this.título}"\n
+        director: "${this.director}"\n
+        Año de estreno: "${this.estreno}"\n
+        País: "${this.pais.join(' - ')}"\n
+        Generos: "${this.generos.join(', ')}"\n
+        Calificación: "${this.calificacion}"\n
+        IMDB id: "${this.id}"`);
+      }
+    }
+
+    // Pelicula.generosAceptados();
+
+     /* const peli = new Pelicula({
+       id: 'tt1234567',
+       titulo: 'La gran peli',
+       director: 'Jhon Doe',
+       estreno: 2020,
+       pais: ['USA', 'Japón'],
+       generos: ['Comedy', 'Sport'],
+       calificacion: 9.555,
+     });
+
+     // Ejecutando metodo de ficha técnica
+      peli.fichaTecnica(); */
+
+      const misPelis = [
+        {
+          id: 'tt1104001',
+       titulo: 'Tron Legacy',
+       director: 'Joseph Kosinski',
+       estreno: 2010,
+       pais: ['USA'],
+       generos: ['Sci-Fi'],
+       calificacion: 6.8,
+        },
+        {
+          id: 'tt0099088',
+       titulo: 'Back to the future',
+       director: 'Robert Zemeckis',
+       estreno: 1985,
+       pais: ['USA'],
+       generos: ['Sci-Fi'],
+       calificacion: 7.4,
+        },
+        {
+          id: 'tt0468569',
+       titulo: 'The Dark Knight',
+       director: 'Christopher Nolan',
+       estreno: 2008,
+       pais: ['USA'],
+       generos: ['Action'],
+       calificacion: 9.0,
+        },
+      ];
+
+      misPelis.forEach(el => new Pelicula(el).fichaTecnica());
+      // Este forEach recorre el array de objetos, por cada objeto genera una nueva instancia
+      // De la clase Pelicula, quien recibe los valores es el elemento (el)
