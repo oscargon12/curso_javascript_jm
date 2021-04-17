@@ -40,6 +40,96 @@
         clearInterval(temporizador2);
         console.log('después del clearInterval');
 
+        // === Conceptos ===
+        // 1. Procesamiento Single thread y multi thread
+        /* Por un lado se apilan las tareas que van ingresando al event loop
+        Cuando salgan del loop se van a un disparador que da una respuesta al usuario */
+
+        // La última tarea en entrar es la primera en salir
+
+        /* 2. Operaciones de CPU / Operaciones de I / O
+         CPU Las que consumen recursos del equipo
+         Input Output Esperan por el recurso */
+
+        /* 3. Operaciones concurrentes y paralelas
+        Las concurrentes se ejecutan con cierta alternancia
+        las paralelas al mismo tiempo
+        
+        Pueden darse single thread paralelas */
+
+        /* 4. Operaciones bloqueantes, toman el control y no devuelven 
+        la ejecución al hilo principal hasta que acabe la tarea
+
+        Las no bloqueantes devuelven el control sin importar si ya ha acabado la tarea */
+
+        /* 5. Sincronas / Asincronas: Cuando tendrá lugar la respuesta
+        Las sincronas la respuesta sucede en el presente
+        Asincrona, no va a esperar el resultado, por lo que puede soltar
+        el control siendo NO bloqueante */
+
+        /* JavaScript usa un modelo asíncrono, no bloqueante, con un loop 
+        de eventos implementado en un solo hilo (single thread) para 
+        operaciones de entrada y salida (input/output(del event loop)) */
+
+
+
+        // Código Sincrono bloqueante
+        (() => {
+            console.log('Código sincrono');
+            console.log('Inicio');
+
+            function dos (){
+                console.log('Dos');
+            }
+
+            function uno(){
+                console.log('Uno');
+                dos();
+                console.log('Tres');
+            }
+
+            uno(); // Este libera las operaciones
+            console.log('Fin');
+        })();
+
+        console.log('************************');
+        
+        //LIFO
+        //Last In First Out (En cuanto a tareas entrado al loop)
+
+        // Código asincrono no bloqueante
+        (() => {
+            console.log('Código asíncrono');
+            console.log('Inicio');
+
+            function dos(){
+                setTimeout(function(){
+                    console.log('Dos');
+                },1000);
+            }
+
+            function uno(){
+                setTimeout(function(){
+                    console.log('Uno');
+                }, 0); // Así el valor sea 0, se va a la pila de tareas
+                dos();
+                console.log('Tres'); //Tres si es una tarea sincrona inmediata
+            }
+
+        uno();
+        console.log('Fin');
+        })();
+
+        /* Imprime:
+        Inicio
+        Tres
+        fin
+        uno
+        Dos */
+
+        
+
+
     </script>
 </body>
 </html>
