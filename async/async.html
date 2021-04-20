@@ -127,9 +127,83 @@
         uno
         Dos */
 
+        console.clear();
+
+        /* console.log('== CALLBACKS ==');
+
+        function cuadradoCallback (value, callback){ // recibe 2 parametros, el valor y la función callback
+            setTimeout(() => {
+                callback(value, value*value)
+            }, 0 | Math.random()*1000)
+        }
+
+        cuadradoCallback(0, (value, result) => {
+            console.log('Inicia callback');
+            console.log(`Callback ${value}, ${result}`);
+                cuadradoCallback(1, (value, result) => {
+                    console.log(`Callback ${value}, ${result}`);
+                    cuadradoCallback(3, (value, result) => {
+                        console.log(`Callback ${value}, ${result}`);
+                        cuadradoCallback(4, (value, result) => {
+                            console.log(`Callback ${value}, ${result}`);
+                            cuadradoCallback(5, (value, result) => {
+                                console.log(`Callback ${value}, ${result}`);
+                                cuadradoCallback(5, (value, result) => {
+                                    console.log(`Fin callback ${value}, ${result}`);
+                            });    
+                        });
+                    });
+                }); 
+            }); 
+        }); */
+
+    console.clear();
+    console.log('== PROMESAS ==');
+    // Asincronia a traves de promesas
+
+    function cuadradoPromise (value, callback){
+        if (typeof value !== 'number') {
+            return Promise.reject(`Error el valor ingresado ${value} no es un numero`)
+        }
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({
+                   value,
+                   result: value * value
+                })
+            }, 0 | Math.random()*1000)
+        })
+    }
+
+    cuadradoPromise(0)
+        .then((obj) => {
+            console.log('Inicia promise');
+            console.log(`Promise ${obj.value}: ${obj.result}`);
+            return cuadradoPromise(1);
+        }) // Esto captura la parte positiva, recibe el objeto de value/result
+        .then((obj) => {
+            console.log(`Promise ${obj.value}: ${obj.result}`);
+            return cuadradoPromise(2);
+        })
+        .then((obj) => {
+            console.log(`Promise ${obj.value}: ${obj.result}`);
+            return cuadradoPromise(3);
+        })
+        .then((obj) => {
+            console.log(`Promise ${obj.value}: ${obj.result}`);
+            return cuadradoPromise(4);
+        })
+        .then((obj) => {
+            console.log(`Promise ${obj.value}: ${obj.result}`);
+            return cuadradoPromise(5);
+        })
+        .then((obj) => {
+            console.log(`Promise ${obj.value}: ${obj.result}`);
+            console.log('Fin de la promesa');
+        })
+        .catch(err); // Esto captura la parte negativa (error)
+        // Todo esto es una sola ejecución
         
-
-
     </script>
 </body>
 </html>
