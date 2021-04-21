@@ -105,7 +105,7 @@
             function dos(){
                 setTimeout(function(){
                     console.log('Dos');
-                },1000);
+                },0); // puedo cambiar ese 0 por cualquiera en milisegundos o por un Math.random
             }
 
             function uno(){
@@ -159,9 +159,9 @@
 
     console.clear();
     console.log('== PROMESAS ==');
-    // Asincronia a traves de promesas
+    // Asincronia a traves de promesas mejora a las callbacks
 
-    function cuadradoPromise (value, callback){
+    /* function cuadradoPromise (value){
         if (typeof value !== 'number') {
             return Promise.reject(`Error el valor ingresado ${value} no es un numero`)
         }
@@ -202,7 +202,94 @@
             console.log('Fin de la promesa');
         })
         .catch(err); // Esto captura la parte negativa (error)
-        // Todo esto es una sola ejecución
+        // Todo esto es una sola ejecución */
+
+        console.clear();
+        console.log('== Async - await ==');
+    // Asincronia a traves de Async - await con promesas
+
+    function cuadradoPromise(value) {
+        if (typeof value !== 'number') {
+            return Promise.reject(`Error el valor ingresado ${value} no es un numero`) // manejo de error
+        }
+        return new Promise((resolve, reject) => { // La promesa recibe lo que resuelve la función
+            setTimeout(() => { // El setTimeOut simula la asincronía
+                resolve({
+                    value,
+                    result: value * value
+                })
+            }, 0 | Math.random() * 1000)
+        })
+    }
+
+    // Función asincrona declarada
+    async function funcionAsincronaDeclarada() {
+        try{ // Mara manejo de errores uso try / Catch
+            console.log('Inicio Async function');
+            //El await hace esperar el resultado de esta función, antes de pasar a la siguiente
+            let obj = await cuadradoPromise(0); // Variable propensa a cambiar de valor
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+            // Al trabajar con async function cada petición la puedo guardar en una variable
+            obj = await cuadradoPromise(1); 
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+            
+            obj = await cuadradoPromise(2); 
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+            
+            obj = await cuadradoPromise(3); 
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+            
+            obj = await cuadradoPromise(4); 
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+            
+            obj = await cuadradoPromise(5); 
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+            // la variable objeto devuelve una promesa
+            // La función cuadradoPromise devuelve un objeto
+            console.log('Fin Async function')
+
+            // Todo esto me hace evitar el then repetido en las promesas
+
+        } catch(err){ // El catch espera recibir un rrror que vienen de cuadradoPormise
+            console.error(err);
+            // Cuando capture error para todo
+        }
+    }
+
+    funcionAsincronaDeclarada();
+
+    // Para hacer async una arrow se pone👇 el async
+    const funcionAsincronaExpresada = async () => {
+        try { // Mara manejo de errores uso try / Catch
+            console.log('Inicio Async function');
+            //El await hace esperar el resultado de esta función, antes de pasar a la siguiente
+            let obj = await cuadradoPromise(6); // Variable propensa a cambiar de valor
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+            // Al trabajar con async function cada petición la puedo guardar en una variable
+            obj = await cuadradoPromise(7);
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+            // El await solo se puede usar en funciones async
+            obj = await cuadradoPromise(8);
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+
+            obj = await cuadradoPromise(9);
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+
+            obj = await cuadradoPromise(10);
+            console.log(`Async Function ${obj.value} ${obj.result}`);
+
+            console.log('Fin Async function')
+
+            // Todo esto me hace evitar el then repetido en las promesas
+
+        } catch (err) { // El catch espera recibir un rrror que vienen de cuadradoPormise
+            console.error(err);
+            // Cuando capture error para todo
+        }
+    }
+
+    funcionAsincronaExpresada();
+
         
     </script>
 </body>

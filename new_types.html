@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevos tipos</title>
+</head>
+<body>
+    <h1>Tipo Symbol</h1>
+
+    <script>
+        console.log('== Tipo de dato Symbol ==')
+        //Sirve para ocultar propiedades o hacerlas privadas
+
+        let id = Symbol();
+        let id2 = Symbol();
+
+        console.log(id === id2);
+        console.log(typeof id, typeof id2);
+
+        const NOMBRE = Symbol('nombre');
+        const SALUDAR = Symbol('saludar');
+        // 
+
+        const persona = {
+            [NOMBRE]: 'Oscar',
+            // En consola no sale el nomnre de la propiedad NOMBRE, solo el valor
+            edad: 35,
+        }
+
+        console.log(persona);
+        
+        persona.NOMBRE = 'Oscar Gonzalez';
+        console.log(persona);
+        console.log(persona.NOMBRE); // Imprime Oscar Gonzalez
+        console.log(persona[NOMBRE]); // imprime Oscar
+
+        persona[SALUDAR] = function () {
+            console.log('Hola')
+        }
+
+        console.log(persona);
+        persona[SALUDAR]();
+
+        // Listar los atributos privados del objeto (symbols) a manera de array
+        console.log(Object.getOwnPropertySymbols(persona));
+
+        console.clear()
+        console.log('******* Set *******')
+        // Nueva estructura de datos que parece ser un array
+        // Le sirve el método forEach
+
+        //Elimina los datos repetidos dentro de una estructura iterable
+
+        const set = new Set([1,2,3,3,4,5, true, false, false, {}, {}, 'hola', 'HOLA']);
+
+        console.log(set);
+
+        const set2 = new Set();
+        set2.add(1);
+        set2.add(2);
+        set2.add(2);
+        set2.add(true);
+        set2.add(false);
+        set2.add(true);
+        set2.add({});
+
+        console.log(set2);
+        console.log(set2.size); // Set no usa lenght sino size
+
+        console.log('Recorriendo set')
+        for (item of set){ // Pero si puede ser recorrido por for of o forEach
+            console.log(item);
+        }
+
+        console.log('Recorriendo set2');
+        set2.forEach(item => console.log((item)));
+
+        // Accediendo a posición de set, convirtiéndolo en array
+        let arr = Array.from(set);
+        console.log(arr)
+        console.log(arr[0])
+
+        // Puedo borrar cosas del set
+        set.delete('HOLA')
+        console.log(set);
+
+        // Puedo buscar cosas dentro del set
+        console.log(set.has('hola'));
+        console.log(set.has(19));
+
+        //Puedo limpiar el set
+        set2.clear();
+        console.log(set2)
+
+
+        console.clear()
+        console.log('******* Map *******')
+        // Tipo de dato similar a un objeto
+
+        let mapa = new Map();
+        mapa.set('nombre', 'Oscar');
+        mapa.set('apellido', 'Gonzalez');
+        mapa.set('edad', 35);
+
+        console.log(mapa);
+        console.log(mapa.size);
+        console.log(mapa.has('nombre')); // has valida si tiene esa propiedad
+        console.log(mapa.get('nombre')); // get toma el valor de esa propiedad
+        mapa.set('nombre', 'Oscar Gonzalez');
+        console.log(mapa.get('nombre'));
+        mapa.delete('apellido'); // Borra una propiedad
+        console.log(mapa);
+
+        // recorriendo el map
+        for (let [key, value] of mapa){ // el let de este for recibe llave y valor
+            console.log(`Llave: ${key}, \n Valor: ${value}`)
+        }
+
+        // *** Sintaxis 2 ***
+        const mapa2 = new Map([
+            ['nombre', 'kenai'],
+            ['edad', 7],
+            ['animal', 'perro'],
+            [null, 'nulo'],
+        ]);
+
+        console.log(mapa2);
+
+        // Destructuración
+        
+        const llavesMapa2 = [...mapa2.keys()];
+        const valoresMapa2 = [...mapa2.values()];
+
+        console.log(llavesMapa2)
+        console.log(valoresMapa2)
+
+
+
+    </script>
+</body>
+</html>
