@@ -94,23 +94,26 @@
         set2.clear();
         console.log(set2)
 
-
         console.clear()
         console.log('******* Map *******')
         // Tipo de dato similar a un objeto
 
         let mapa = new Map();
-        mapa.set('nombre', 'Oscar');
+        mapa.set('nombre', 'Oscar'); // Set para establecer valores
         mapa.set('apellido', 'Gonzalez');
         mapa.set('edad', 35);
 
         console.log(mapa);
-        console.log(mapa.size);
+        console.log(mapa.size); // devuelve la cantidad de elementos del map
         console.log(mapa.has('nombre')); // has valida si tiene esa propiedad
         console.log(mapa.get('nombre')); // get toma el valor de esa propiedad
         mapa.set('nombre', 'Oscar Gonzalez');
         console.log(mapa.get('nombre'));
         mapa.delete('apellido'); // Borra una propiedad
+
+        mapa.set(19, 'diecinueve')
+        mapa.set(false, 'falso')
+        mapa.set({}, {})
         console.log(mapa);
 
         // recorriendo el map
@@ -118,6 +121,7 @@
             console.log(`Llave: ${key}, \n Valor: ${value}`)
         }
 
+        // En objetos los key son strings, en map pueden ser cualquier tipo de valor
         // *** Sintaxis 2 ***
         const mapa2 = new Map([
             ['nombre', 'kenai'],
