@@ -140,6 +140,40 @@
         console.log(llavesMapa2)
         console.log(valoresMapa2)
 
+        // === weaksets & weakmaps ===
+        // almacenan referencias debiles, de tipo objeto
+        console.clear();
+        console.log('=== weaksets & weakmaps ===');
+        
+        // No son elementon iterables, no podemos consultar su tamaño (size)
+        const ws = new WeakSet() // Esta es la sintaxis
+        // sus elementos se agregan por separado, pero solo recibe objetos, asi:
+        let valor1 = {'valor1': 1},
+        valor2 = {'valor2': 2},
+        valor3 = {'valor3': 3};
+        ws.add(valor1);
+        ws.add(valor2);
+
+        console.log(ws);
+        console.log(ws.has(valor1));
+        console.log(ws.has(valor3));
+         
+        console.clear();
+        // === Weakmaps ===
+        const wm = new WeakMap();
+
+        let llave1 = {},
+         llave2 = {},
+         llave3 = {};
+
+         wm.set(llave1, 1);
+         wm.set(llave2, 2);
+
+         console.log(wm);
+         
+         console.log(ws.has(llave1));
+        console.log(ws.has(llave3));
+
 
 
     </script>
