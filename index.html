@@ -78,24 +78,24 @@
         console.log(colores);
 
         console.log('==== TIPOS DE DATOS ====')
+
         // ===== STRINGS ======
         let nombre = '   Oscar';
         let nickname = 'Pollo';
 
         console.log(nombre, nickname);
-        console.log(nombre.length, 
+        console.log(nombre.length); 
         nickname.length,
         nombre.toLowerCase(),
         nickname.toUpperCase(),
-        nombre.includes('sc'),
+        nombre.includes('sc'), //true
         // El includes busca coincidencias que estén en el string
         
-        nombre.trim(),
+        nombre.trim(); //= Oscar
         // El trim borra espacios antes y después de la cadena
 
         nombre.split(' '),
-        // Split separa las cadenas
-        );
+        // Split separa las cadenas, en este caso por espacios
 
         console.log('==== CONCATENACIÓN ====')
         // ===== CONCATENACIÓN ======
@@ -131,16 +131,16 @@
 
         console.log(a,b);
         console.log(c)
-        console.log(c.toFixed(1));
+        console.log(c.toFixed(1)); // 7.2
         // Este redondea los decimales
         console.log(c.toFixed(5));
-        console.log(parseInt(c));
+        console.log(parseInt(c)); // 7
         // parseInt lo convierte en numero entero
         console.log(parseFloat(c));
         // parseFloat lo convierte en numero decimal
 
         console.log(typeof c, typeof d);
-        console.log(a + b);
+        console.log(a + b); // 3
         console.log(c + parseInt(d));
         // Suma el number más la cadena y lo parsea a entero
         console.log(c + parseFloat(d));
