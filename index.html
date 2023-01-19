@@ -77,6 +77,8 @@
         console.log(objeto);
         console.log(colores);
 
+        // ***** Valores primitivos ******
+
         console.log('==== TIPOS DE DATOS ====')
 
         // ===== STRINGS ======
@@ -131,11 +133,11 @@
 
         console.log(a,b);
         console.log(c)
-        console.log(c.toFixed(1)); // 7.2
+        console.log(c.toFixed(1)); // 7.2 (solo un decimal después del punto)
         // Este redondea los decimales
         console.log(c.toFixed(5));
         console.log(parseInt(c)); // 7
-        // parseInt lo convierte en numero entero
+        // parseInt recibe flotantes o strings para convertirlo en entero
         console.log(parseFloat(c));
         // parseFloat lo convierte en numero decimal
 
@@ -143,7 +145,7 @@
         console.log(a + b); // 3
         console.log(c + parseInt(d));
         // Suma el number más la cadena y lo parsea a entero
-        console.log(c + parseFloat(d));
+        console.log(c + parseFloat(d)); // 12.79
         // Suma el number más la cadena y lo parsea a decimal
 
         // Que es lo mismo q esto
@@ -159,24 +161,25 @@
         console.log(verdadero, falso);
         console.log(typeof verdadero, typeof falso);
 
-        console.log(Boolean(0));
-        console.log(Boolean(''));
-        console.log(Boolean(0));
-        console.log(Boolean(0));
+        console.log(Boolean(0)); // false
+        console.log(Boolean(-7)); // true
+        console.log(Boolean('')); // false
+        console.log(Boolean(0)); // false
+        console.log(Boolean(0)); // false
 
         // ===== NULL UNDEFINED NaN ======
 
-        // Undefined indica que no se ha iniciado la variable y el valor está ausente
-        let indefinida;
+        // Undefined indica que no se ha asignado un valor a la variable
+        let indefinida; // undefined = NO tiene valor
         console.log(indefinida);
 
         // Null indica la ausencia intencional o accidental de un valor
-        let nulo = null;
+        let nulo = null; 
         console.log(nulo);
 
         //NaN Not a Number
         let noEsUnNumero = 'hola' * 3.7;
-        console.log(noEsUnNumero);
+        console.log(noEsUnNumero); //NaN Not a number
 
         // ===== FUNCIONES ======
         console.log('==== FUNCIONES ====')
