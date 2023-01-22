@@ -181,7 +181,7 @@
         let noEsUnNumero = 'hola' * 3.7;
         console.log(noEsUnNumero); //NaN Not a number
 
-        // ===== FUNCIONES ======
+        // ****===== FUNCIONES ======****
         console.log('==== FUNCIONES ====')
 
         // Función declarada
@@ -194,41 +194,43 @@
         // Invocación de función
         primeraFuncion();
 
+        //Funcion que devuelve valor
         function funcionValores (){
             console.log('uno')
             console.log('dos')
             return 'La función a devuelto un valor, pero el return cortó todo'
             console.log('tres')
-
+            //Desde el return ya no se ejecuta nada mas dentro de la funcion
         }
 
         let valorDeFuncion = funcionValores();
 
         console.log(valorDeFuncion)
-        // Para imprimir el return, debo asignarle la función a una variable, para llamarla luego
-        // con un console.log
+        // Para imprimir el return, debo asignarle la función a una variable,
+        // para llamarla luego con un console.log
 
         // Todo el código después del return se ignora
 
         function saludar(nombre = 'desconocido', edad = 0){
-            // Si cuando invoque esta funcion no le agrego parametros,
+            // Si al invocar esta funcion no le agrego parametros,
             // por defecto pone estos: nombre = 'desconocido', edad = 0
 
             console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`);
         }
 
-        saludar('oscar',35);
+        saludar('oscar',37); //Hola mi nombre es Oscar y tengo 37 años
+        saludar(); //Hola mi nombre es desconocido y tengo 0 años
 
 
-        // Funciones declaradas Vs expresadas
+        // ======= Funciones declaradas Vs expresadas =======
         funcionDeclarada();
-        // Estas funciones js las pone en un scope global, por eso puedo invocarla antes e creala
+        // Estas funciones js las pone en un scope global, por eso puedo invocarla antes de creala
 
         function funcionDeclarada(){
             console.log('Esto es una función declarada, puedo invocarla en cualquier momento, incluso antes de crearla');
         }
 
-        // === Funcion expresada / Anonima ===
+        // *****=== Funcion expresada / Anonima ===*****
         // A diferencia de las declaradas estas no se pueden invocar antes de crearlas
         const funcionExpresada = function(){
             console.log('Esto es una funcion expresada o anonima, se le ha asignado como valor a una variable')
@@ -236,7 +238,7 @@
 
         funcionExpresada();
 
-        // ===== ARRAYS ======
+        // *****===== ARRAYS ======*****
         console.log('==== ARRAYS ====')
 
         const array1 = [];
@@ -244,7 +246,7 @@
 
         console.log(array1);
         console.log(array2);
-        console.log(array2[2])
+        console.log(array2[2]) //Hola
 
         // Accedo la letra C dentro del array anidado
         console.log(array2[3]) // ['A', 'B', 'C']
@@ -252,23 +254,28 @@
 
         // Este arreglo repite 12 veces el string Hola
         const e = Array(12).fill('Hola');
-        console.log(e)
+        console.log(e) //Las 12 posiciones tienen el mismo valor 'Hola'
 
         const colores2 = ['amarillo', 'Azul', 'Rojo'];
-        console.log(colores)
+        console.log(colores) //'amarillo', 'Azul', 'Rojo'
 
         // push: Ubica el color negro en la ultima posición del array
         colores.push('negro');
-        console.log(colores)
+        console.log(colores) //'amarillo', 'Azul', 'Rojo', 'negro'
 
         // pop: Quita el color negro de la ultima posición del array
         colores.pop('negro');
-        console.log(colores)
+        console.log(colores) //'amarillo', 'Azul', 'Rojo'
 
+        // ==== Método forEach ====
         // Con el for each puedo rellenar elementos con elementos del array
         colores2.forEach(function (el, index){
             console.log(`<li id="${index}">${el}</li>`)
         });
+
+        /* <li id="0">amarillo</li>
+        <li id="1">Azul</li>
+        <li id="2">Rojo</li> */
 
 
         // ===== OBJETOS ======
