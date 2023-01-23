@@ -278,30 +278,34 @@
         <li id="2">Rojo</li> */
 
 
-        // ===== OBJETOS ======
+        // **** ===== OBJETOS ====== ****
         console.log('==== OBJETOS ====')
 
         // Dentro de un objeto las variables se llaman atributos
         // Y las funciones se llaman métodos
         const user = {
+            //Atributos
             nombre : 'Oscar',
             nickname : 'Pollo',
-            edad : 34,
+            edad : 37,
             soltero : false,
-            pasatiempos : ['Bici', 'Futbol', 'Videojuegos'],
+            pasatiempos : ['Bici', 'Futbol', 'Cine', 'Skate'],
             // Puedo meter objetos dentro de objetos
             contacto : {
                 tel : 319,
                 mail : '1@1.com',
+                twitter : 'my@twitter'
             },
 
+            //Metodos
             saludar : function (){
                 console.log('Hola a todos :)');
             },
 
-            decirNombre : function(){
-                console.log(`Hola, mi nombre es ${this.nombre} y me dicen ${this.nickname} y me puedes llamr al ${this.contacto.tel}`)
+            decirNombre : function(user = 'User'){
+                console.log(`Hola ${user}, mi nombre es ${this.nombre} y me dicen ${this.nickname} y me puedes llamr al ${this.contacto.tel}`)
             }
+            //El this hace referencia al objeto en cuestion this.nombre = oscar
         }
 
         console.log(user);
@@ -310,13 +314,13 @@
         console.log(user.contacto.mail);
         user.saludar(); // Hola a todos :)
 
-        user.decirNombre(); 
+        user.decirNombre('Marce'); 
 
         //Este console me imprime las llaves
-        console.log(Object.keys(user));
+        console.log(Object.keys(user)); //['nombre', 'nickname', 'edad', 'soltero', 'pasatiempos', 'contacto', 'saludar', 'decirNombre']
         
         //Este console me imprime los valores
-        console.log(Object.values(user));
+        console.log(Object.values(user)); //['Oscar', 'Pollo', 37, false, Array(4), {…}, ƒ, ƒ]
 
         // este me permite saber si el objeto tiene la propiedad nombre
         console.log(user.hasOwnProperty('nombre')); // true
