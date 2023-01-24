@@ -165,7 +165,8 @@
         console.log(Boolean(-7)); // true
         console.log(Boolean('')); // false
         console.log(Boolean(0)); // false
-        console.log(Boolean(0)); // false
+
+
 
         // ===== NULL UNDEFINED NaN ======
 
@@ -238,6 +239,8 @@
 
         funcionExpresada();
 
+
+
         // *****===== ARRAYS ======*****
         console.log('==== ARRAYS ====')
 
@@ -272,10 +275,10 @@
         colores2.forEach(function (el, index){
             console.log(`<li id="${index}">${el}</li>`)
         });
-
         /* <li id="0">amarillo</li>
         <li id="1">Azul</li>
         <li id="2">Rojo</li> */
+
 
 
         // **** ===== OBJETOS ====== ****
@@ -326,12 +329,15 @@
         console.log(user.hasOwnProperty('nombre')); // true
         console.log(user.hasOwnProperty('nacimiento')); // false
 
-        // ==== Operadores ====
+
+
+        // **** ==== Operadores ==== ****
         console.log('==== OPERADORES ====')
 
         // Aritmeticos
         let operadores1 = 5 + (5-10) * 3; // 10
-        let modulo = 10%2; // 1
+        let moduloPar = 10%2; // 0
+        let moduloImpar = 5%2; // 1
         // Si el módulo % de una división entre 2 da cero, significa que es par
 
         console.log( `el resultado es  ${operadores1}`);
@@ -342,8 +348,8 @@
 
         console.log(9>8); //true 
         console.log(7>7); //false
-        console.log(7>=7); //true porque 7 si es igual a 7
-        console.log(9>=8); //true porque 9 si es mayor a 8
+        console.log(7>=7); //(operador compuesto) true porque 7 si es igual a 7
+        console.log(9>=8); //(operador compuesto) true porque 9 si es mayor a 8
 
         /* = es asignación de variable
         == Comparación de valores
@@ -357,44 +363,49 @@
 
         // Siempre es mejor comparar con triple igual ===
 
-        // Operadores de Incremento / Decremento
+        // ==== Operadores de Incremento / Decremento ====
         let i = 1;
 
         i += 2 // i = i + 2
-        console.log(`El valor de i es ${i}`)
+        console.log(`El valor de i es ${i}`) //3
         //Estoy sumando el valor que ya tiene i más 2
 
         let divi = 10;
-        divi /= 2
-        console.log(`El valor de d es ${divi}`);
+        divi /= 2 //divi = divi / 2
+        console.log(`El valor de d es ${divi}`); //5
         // estoy dividiendo el valor que ya tiene divi entre 2
 
         // Operador unario
-        i++;
+        let j = 2;
+        j++; //3
+        j--; //2
         console.log(`Console.log después del i++ ${i}`)
         // Se recomienda siempre usar los operadores antes de la variable ( i++ )
 
-        // === Operadores lógicos ===
+
+        // *** === Operadores lógicos === ***
         // ! not Niega lo que es true, lo vuelve false y viceversa
         // || or Almenos una condición de 2 o más se debe cumplir
         // && and Todas las condiciones se deben cumplir
 
-        console.log(!true);
+        console.log(!true); //false
 
         // con OR almenos una de las condiciones se debe cumplir
-        console.log((9 === 9)||( 9 === '9' ));
+        console.log((9 === 9)||( 9 === '9' )); //true
 
         // con And todas las condiciones se deben cumplir
-        console.log((9 === 9) && ( 9 === '9' ));
+        console.log((9 === 9) && ( 9 === '9' )); //false
 
 
-        // ==== Estructuras de control ====
+
+        // **** ==== Estructuras de control ==== **** 
         // Hay estructuras secuenciales que son como las que hemos visto hasta aquí
         // Estructuras condicionales: tomar decisiones, o no, dependiendo de ciertas condiciones
         // Loops Estructuras repetitivas
 
         console.log('==== Estructuras de control ====')
 
+        //if else
         let edad = 12;
         if (edad >= 18 ){
             console.log('Eres mayor de edad');
@@ -403,12 +414,12 @@
         }
         // Si dejo solo el < estoy excluyendo el numero contra el que comparto
         // Si dejo <= lo incluyo
-
+        
+        //=== if - else if - else===
         // Buenos días 6hrs - 11hrs
         // buenas tardes 12hrs - 18hrs
         // buenas noches 19hrs - 23hrs
         // Deja dormir 24hrs - 5hrs
-
         let hora = 10;
         if (hora >= 0 && hora <= 5){
             console.log('Dejame dormir')
@@ -427,6 +438,8 @@
         : 'Eres menor'; //Parte verdadera
         console.log(eresMayor); //imprimiendo la variable
 
+        //Se puede en una sola linea
+        (5 > 4) ?'Si test' : 'Noooo'; //Si test
 
         console.log('== SWITCH CASE ==')
         /* 
@@ -464,6 +477,22 @@
             default:
                 console.log('El día no existe');
             break;
+        }
+
+        let day = 'Martes';
+        switch (day){
+            case 'Lunes':
+                console.log('Wrap de atún');
+                break;
+            case 'Martes':
+                console.log('Sudado de pollo');
+                break;
+            case 'Miercoles':
+                console.log('Verduras con cerdo');
+                break;
+            default:
+                console.log('Domicilio');
+                break;
         }
         
     // ===== CICLOS ======
