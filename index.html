@@ -506,12 +506,15 @@
     }
     console.log(`Acá contador vale ${contador}`)
  
+
+    // Do while
     do{
         console.log(contador);
         contador++;
     }while(contador < 10);
     // En este se ejecuta al menos una vez 
 
+    // === Ciclo For ===
     console.log('==== CICLO FOR ====');
 
     for (let i = 0; i < 10; i++){
@@ -526,12 +529,12 @@
 
     console.log('==== CICLO IN / OF ====');
 
-    // For in = Objetos -//- For of = Arrays o strings
+    // For in = Objetos -
     // For in me permite recorrer key, values o ambos de un objeto
     const user2 = {
         nombre: 'Oscar',
         Apellido: 'Gonzalez',
-        edad: 35,
+        edad: 37,
     }
 
     for(const propiedad in user2){
@@ -539,9 +542,10 @@
         // Acá si no me sirve la notación de punto, 👆 debe ser de corchetes cuadrados
     }
 
+    //- For of = Arrays o strings
     //For of Me permite recorrer un array o una cadena de texto
-    for(const elemento of numeros2){
-        console.log(elemento);
+    for(const el of numeros2){
+        console.log(el);
     }
 
     let hi = 'hello world';
