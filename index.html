@@ -555,15 +555,16 @@
 
     setTimeout(() => {console.log('Tomemos una pausa de 5 segundos')}, 5000 );
 
-    // ===== MANEJO DE ERRORES ======
+    // ===== MANEJO DE ERRORES ====== Es una estructura de control
     console.log('==== MANEJO DE ERRORES ====');
+    //Reemplaza a la notificación de error por defecto
 
     try {
         console.log('En el try se agrega el código a evaluar')
-        noExiste;
+        noExiste; //Variable no declarada (error intencional)
         console.log('Segundo mensaje en try, no se ejecuta si hay error')
     } catch (error) {
-        console.log('Catch captura los errores en el bloque try, si no hay error no hace nada');
+        console.error('Catch captura los errores en el bloque try, si no hay error no hace nada');
         console.log(error);
     } finally{
         console.log('Finally se ejecuta siempre al final de un try-catch')
@@ -571,9 +572,8 @@
 
     try {
         let numero3 = 'y';
-        if (isNaN(numero3)){
-            //👆 isNaN me valida que si sea un number
-            throw new Error('El caracter introducido no es un número');
+        if (isNaN(numero3)){ // isNaN valida que si sea un number
+            throw new Error('El caracter introducido no es un número'); //Este es el error que 
         }
         // Antes de ejecutar 👇 la operación del console.log, debo 👆 validar que sea un número
         console.log(numero3 * numero3) // Si hay error esta linea no se ejecuta
@@ -581,6 +581,15 @@
         console.warn(`Se produjo el siguiente error ${error}`)
     }
 
+    //Ejem2
+    try{
+        let numTry = 22;
+        if (isNaN(numTry)){
+            throw new error('El caracter no es de tipo number')
+        }
+    } catch(error) {
+        console.log(`Se produjo el siguiente error ${error}`)
+    }
     // ===== BREAK & CONTINUE ======
     console.log('==== BREAK & CONTINUE ====');
 
