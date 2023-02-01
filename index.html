@@ -555,7 +555,7 @@
 
     setTimeout(() => {console.log('Tomemos una pausa de 5 segundos')}, 5000 );
 
-    // ===== MANEJO DE ERRORES ====== Es una estructura de control
+    // ===== MANEJO DE ERRORES ====== Es una estructura de control, personaliza los errores
     console.log('==== MANEJO DE ERRORES ====');
     //Reemplaza a la notificación de error por defecto
 
@@ -585,12 +585,13 @@
     try{
         let numTry = 22;
         if (isNaN(numTry)){
-            throw new error('El caracter no es de tipo number')
+            throw new error('El caracter NO es de tipo number')
         }
     } catch(error) {
         console.log(`Se produjo el siguiente error ${error}`)
     }
-    // ===== BREAK & CONTINUE ======
+    // ****===== BREAK & CONTINUE ======****
+    //Solo sirve con ciclos for, no con for of
     console.log('==== BREAK & CONTINUE ====');
 
     const numeros4 = [1,2,3,4,5,6,7,8,9,0];
@@ -600,7 +601,7 @@
             break; // 👈 Este break corta el barrido del array en el index 5
         }
         console.log(numeros4[i])
-    }
+    } // 1 2 3 4 
     
     for (let i = 0; i < numeros4.length; i ++){
         if(i === 5){
@@ -608,6 +609,7 @@
         }
         console.log(numeros4[i])
     }
+    //1 2 3 4 5 7 8 9 0
     
     console.log('Imprimiendo solo pares')
     for (let i = 0; i < numeros4.length; i ++){
@@ -621,15 +623,19 @@
     console.log('==== DESTRUCTURING ====');
     // Se usa para traer datos de arrays u objetos de forma más dinámica
 
+
+    //*** Sin destructurar ***
     console.log('Sin destructuring')
     let numeros5 = [1,2,3];
 
+    //para guardar cada item del array en una variable
     let uno = numeros5[0],
         dos = numeros5[1],
         tres = numeros5[2]
     
     console.log(uno,dos,tres)
 
+    //*** Con destructuración ***
     console.log('Con destructuring')
     const[one,two,three] = numeros5;
 
@@ -638,7 +644,7 @@
     const persona = {
         name: 'Oscar',
         lastname: 'Gonzalez',
-        age:35,
+        age:37,
     }
 
     const {name, age, lastname} = persona;
@@ -647,6 +653,7 @@
     // ===== OBJETOS LITERALES ======
     console.log('==== OBJETOS LITERALES ====');
 
+    // Sin destructurar
     let nombrePerro = 'kenai';
     let edadPerro = 10;
 
@@ -661,14 +668,15 @@
     console.log(perro);
     perro.ladrar();
 
+    // *** Con objetos literales ***
     console.log('Con objetos literales')
     // Con los objetos literales puedo abreviar la construcción de los objetos
     // si el key y el value son el mismo
 
     // Así 👇 se abrevia
     const dog = {
-        nombrePerro, // solo se pone una vez y la coma
-        edadPerro,
+        nombrePerro, //Ya que la llave se llama igual a la variable, se sintetiza código asi:
+        edadPerro, // solo se pone una vez y la coma
         ladrar(){ //Se pone son dos puntos y sin la palabra function
             console.log('Guauuu Guauu !!!')
         }
