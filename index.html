@@ -688,6 +688,7 @@
     // ===== PARAMETROS REST ======
     console.log('==== PARAMETROS REST ====')
     // Sirven para agregar parámetros a una función que pueden o no ser infinitos
+    //(a,b ...∞)
 
     function sumar (a,b, ...c) {
         let resultado = a + b;
@@ -699,12 +700,12 @@
 
         return resultado;
     }
-    console.log(sumar(1,2));
-    console.log(sumar(1,2,3));
-    console.log(sumar(1,2,3,4));
-    console.log(sumar(1,2,3,4,5)); // Y así sucesivamente
+    console.log(sumar(1,2)); // 3
+    console.log(sumar(1,2,3)); // 6
+    console.log(sumar(1,2,3,4)); // 10
+    console.log(sumar(1,2,3,4,5)); // 15, Y así sucesivamente
 
-    // ===== SPREAD OPERATOR ======
+    // **** ===== SPREAD OPERATOR ====== ****
     console.log('==== SPREAD OPERATOR ====')
     // Operador de propagación Permite la fusión entre arrays 👉👈 
 
@@ -716,10 +717,16 @@
 
         // Es muy facil 👇 fusionar los arrays, se anteponen los tres puntos
         const arr3 = [...arr1, ...arr2];
-
         console.log(arr3)
 
-        // ===== ARRAY FUNCTIONS ======
+        //Ejemp:
+        let weekArr = ['mon', 'tue', 'wed', 'thu', 'fri'],
+            endDays= ['sat', 'sun'];
+
+        const allWeek = [...weekArr, ...endDays] 
+        console.log(allWeek)
+
+        // ****===== ARRAY FUNCTIONS ======****
         console.log('==== ARRAY FUNCTIONS ====')
 
             //Funcion expresada
@@ -743,14 +750,14 @@
 
             // Arrow function Si la función tiene 1 linea
             // Si no recibe parametros si hay que poner los parentesis
-            const saludar4 = () => console.log(`Si la función tiene 1 linea`);
+            const saludar4 = () => console.log(`Si la función tiene 1 linea`); //return implicito
             saludar4();
 
-            // Si la función tiene 1 solo parametro se pueden quitar los parametros
+            // Si la función tiene 1 solo parametro se pueden quitar los parentesis
             const saludar5 = nombre => console.log(`holiii ${nombre} como estas`)
             saludar5('oscar');
 
-            const sumar2 = (a, b) => a + b;
+            const sumar2 = (a, b) => a + b; //Si toda la función solo tiene una líne ade código
             console.log(sumar2(4, 7));
 
             //Si la funcion tiene varias lineas se respeta la estructura base
@@ -764,20 +771,28 @@
             // Tambien puedo usar las arrow en ciclos forEach
             // Este es un for each con funcion normal
             const numeros6 = [1, 2, 3, 4, 5];
-
+            
+            //forEach con funcion normal
             numeros6.forEach(function (el, index) {
                 console.log(`Elemento ${el} está en la posición ${index}`);
             })
 
-
-            console.log('forEach con arrow function');
             // Este es un forEach con arrow function
+            console.log('forEach con arrow function');
             numeros6.forEach((el, index) => console.log(`Elemento ${el} está en la posición ${index}`));
 
+            //Las arrow capturan el this del scope en que se encuentren
             // Los metodos de los objetos no es recomendable usar arrow function, porque altera el scope apuntando a un contexto global
             const perrito = {
                 nombre: 'Kenai',
-                ladrar() { // Es mejor usarlas como on¡bjetos literales
+                ladrar: () => { // Es mejor usarlas como objetos literales
+                    console.log(this)
+                }
+            }
+            
+            const perrito2 = {
+                nombre: 'Kenai',
+                ladrar(){ // Metodo en objeto literal
                     console.log(this)
                 }
             }
