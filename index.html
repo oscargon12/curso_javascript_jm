@@ -816,14 +816,14 @@ Métodos: Son las acciones que un objeto puede realizar son funciones dentro del
 
     console.log(animal);
 
-    // Esto es una función constructora
-    // Las funciones cnstructoras se escriben en UpperCamelCase
-    function AnimalMolde(nombre, genero){
+    // ***== Esto es una función constructora ==***
+    // Se escribe una sola vez y de ella se generan nuevas instancias (objetos)
+    function AnimalMolde(nombre, genero){ // Las funciones cnstructoras se escriben en UpperCamelCase
         // Atributos
         this.nombre = nombre;
         this.genero = genero;
 
-        //Metodos los saco del constructor
+        //Metodos los saco del constructor👇
     }
 
     /* yo puedo sacar los metodos del prototipo, para que al instanciarlo 
@@ -831,12 +831,17 @@ Métodos: Son las acciones que un objeto puede realizar son funciones dentro del
     quiera traer mejora en rendimiento y memoria en la programacion */
     AnimalMolde.prototype.sonar = function (){
             console.log('Hago ruido porq estoy vivo');
-        }
+    } //Sacar el método de la clase evita que los metodos se dupliquen cada vez que se instancie:
+    //('Hago sonidos porq estoy vivo');
+    //('Hago sonidos porq estoy vivo');
     
     AnimalMolde.prototype.saludar = function (){
             console.log(`Hola mi nombre es ${this.nombre}`);
-        }
+    }
 
+    //Sacando instancias del molde
+    const snoopy = new AnimalModel('Snoopy', 'Male');
+    const lolaBunny = new AnimalModel('Lola', 'female');
 
     // Herencia prototipica
     function Perro(nombre, genero, tamanio) {
