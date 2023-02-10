@@ -843,14 +843,15 @@ Métodos: Son las acciones que un objeto puede realizar son funciones dentro del
     const snoopy = new AnimalModel('Snoopy', 'Male');
     const lolaBunny = new AnimalModel('Lola', 'female');
 
-    // Herencia prototipica
+    // *** === Herencia prototipica === ***
+    //Funcion cponstructora
     function Perro(nombre, genero, tamanio) {
-        this.super = AnimalMolde;
+        this.super = AnimalMolde; //llamo a la funcion padre AnimalMolde (linea 821)
         this.super(nombre, genero);
         this.tamanio = tamanio;
     }
 
-    // Perro esta heredando de AnimalMolde
+    // Perro esta heredando de AnimalMolde (821)
     Perro.prototype = new AnimalMolde();
     Perro.prototype.constructor = Perro;
 
